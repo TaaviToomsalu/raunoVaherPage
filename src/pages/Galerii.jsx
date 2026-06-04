@@ -1,9 +1,12 @@
-// Placeholder pildid (picsum.photos). Asenda hiljem päris fotodega.
-const images = Array.from({ length: 9 }, (_, i) => ({
-  id: i + 1,
-  src: `https://picsum.photos/seed/rauno-${i + 1}/600/450`,
-  alt: `Rauno Vaher esinemas — foto ${i + 1}`,
-}))
+// Rauno Vaheri fotod (asuvad public/galerii/ kaustas).
+// wide: true → laiad fotod lähevad terve galerii laiuse peale (suuremad).
+const images = [
+  { src: '/galerii/raunokosmos.jpg', alt: 'Rauno Vaher — stuudios' },
+  { src: '/galerii/rauno.jpg', alt: 'Rauno Vaher portree' },
+  { src: '/galerii/rauno-portree.jpg', alt: 'Rauno Vaher lähivaates' },
+  { src: '/galerii/metsikrauno.jpg', alt: 'Rauno Vaher trummide taga — energiline esitus', wide: true },
+  { src: '/galerii/raunolilledes.jpg', alt: 'Rauno Vaher lavalt', wide: true },
+]
 
 export default function Galerii() {
   return (
@@ -16,7 +19,10 @@ export default function Galerii() {
 
         <div className="gallery-grid">
           {images.map((img) => (
-            <div className="gallery-item" key={img.id}>
+            <div
+              className={img.wide ? 'gallery-item wide' : 'gallery-item'}
+              key={img.src}
+            >
               <img src={img.src} alt={img.alt} loading="lazy" />
             </div>
           ))}

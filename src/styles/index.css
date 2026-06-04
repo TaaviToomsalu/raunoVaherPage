@@ -162,12 +162,18 @@ img {
 .hero {
   position: relative;
   padding: 6rem 0 5rem;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 20% 20%,
-      rgba(224, 83, 31, 0.18),
+      rgba(224, 83, 31, 0.22),
       transparent 55%
     ),
-    var(--bg);
+    linear-gradient(
+      to bottom,
+      rgba(15, 15, 18, 0.72),
+      rgba(15, 15, 18, 0.9)
+    ),
+    url('/galerii/metsikrauno.jpg') center / cover no-repeat;
   text-align: center;
 }
 
@@ -205,38 +211,64 @@ img {
   border: 1px solid var(--border);
 }
 
-.video-wrapper iframe {
+.video-wrapper iframe,
+.video-wrapper video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
+  object-fit: cover;
+  background: #000;
 }
 
-/* Galerii grid */
+/* Galerii — masonry, pildid säilitavad loomuliku kuju */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
+  column-count: 3;
+  column-gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .gallery-grid {
+    column-count: 1;
+  }
 }
 
 .gallery-item {
   position: relative;
-  aspect-ratio: 4 / 3;
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--surface);
 }
 
 .gallery-item img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   transition: transform 0.4s ease;
 }
 
 .gallery-item:hover img {
   transform: scale(1.06);
+}
+
+/* Laiad fotod terve galerii laiuse peale */
+.gallery-item.wide {
+  column-span: all;
+  margin-top: 0.25rem;
+}
+
+.gallery-item.wide img {
+  max-height: 520px;
+  object-fit: cover;
 }
 
 /* Esinemised */

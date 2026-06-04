@@ -24,7 +24,11 @@ export default function Avaleht() {
           <p className="section-subtitle">
             Väike sissevaade sellesse, mida ootad — elav esitus ja puhas groove.
           </p>
-          <VideoEmbed videoId="dQw4w9WgXcQ" title="Rauno Vaher — esitlusvideo" />
+          <VideoEmbed
+            src="/esitlusvideo.mp4"
+            poster="/esitlusvideo-poster.jpg"
+            title="Rauno Vaher — esitlusvideo"
+          />
         </div>
       </section>
     </>

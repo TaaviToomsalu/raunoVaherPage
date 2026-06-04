@@ -1,12 +1,19 @@
-// Üksainus YouTube video embed, mida kasutatakse Avalehel.
-export default function VideoEmbed({ videoId = 'dQw4w9WgXcQ', title = 'Esitlusvideo' }) {
+// Otse saidilt serveeritav video (fail asub public/ kaustas).
+// poster = eelvaatepilt, mida näidatakse enne mängima panemist (valikuline).
+export default function VideoEmbed({
+  src = '/esitlusvideo.mp4',
+  poster,
+  title = 'Esitlusvideo',
+}) {
   return (
     <div className="video-wrapper">
-      <iframe
-        src={`https://www.youtube.com/embed/${videoId}`}
+      <video
+        src={src}
+        poster={poster}
         title={title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
+        controls
+        preload="metadata"
+        playsInline
       />
     </div>
   )
