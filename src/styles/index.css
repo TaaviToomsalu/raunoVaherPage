@@ -6,9 +6,33 @@
   --muted: #a0a0ab;
   --accent: #e0531f;
   --accent-hover: #ff6a33;
+  --accent-text: #f06030; /* lighter accent for small text — passes WCAG AA (4.5:1) on --bg */
   --border: #2a2a33;
   --max-width: 1100px;
   --radius: 12px;
+}
+
+/* Visible keyboard focus indicator on every interactive element */
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip-navigation link — hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+.skip-link:focus {
+  top: 0;
 }
 
 *,
@@ -181,7 +205,7 @@ img {
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 0.8rem;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 1rem;
 }
 
@@ -291,7 +315,7 @@ img {
 .gig-date {
   flex-shrink: 0;
   font-variant-numeric: tabular-nums;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
   min-width: 110px;
 }
@@ -367,9 +391,10 @@ img {
   font-family: inherit;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 2px;
   border-color: var(--accent);
 }
 

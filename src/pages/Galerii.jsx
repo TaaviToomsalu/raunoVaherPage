@@ -1,11 +1,11 @@
 // Rauno Vaheri fotod (asuvad public/galerii/ kaustas).
 // wide: true → laiad fotod lähevad terve galerii laiuse peale (suuremad).
 const images = [
-  { src: '/galerii/raunokosmos.jpg', alt: 'Rauno Vaher — stuudios' },
-  { src: '/galerii/rauno.jpg', alt: 'Rauno Vaher portree' },
-  { src: '/galerii/rauno-portree.jpg', alt: 'Rauno Vaher lähivaates' },
-  { src: '/galerii/metsikrauno.jpg', alt: 'Rauno Vaher trummide taga — energiline esitus', wide: true },
-  { src: '/galerii/raunolilledes.jpg', alt: 'Rauno Vaher lavalt', wide: true },
+  { src: '/galerii/raunokosmos.jpg', alt: 'Rauno Vaher — stuudios', w: 513, h: 700 },
+  { src: '/galerii/rauno.jpg', alt: 'Rauno Vaher portree', w: 1280, h: 1600 },
+  { src: '/galerii/rauno-portree.jpg', alt: 'Rauno Vaher lähivaates', w: 356, h: 474 },
+  { src: '/galerii/metsikrauno.jpg', alt: 'Rauno Vaher trummide taga — energiline esitus', wide: true, w: 1600, h: 1066 },
+  { src: '/galerii/raunolilledes.jpg', alt: 'Rauno Vaher lavalt', wide: true, w: 1600, h: 830 },
 ]
 
 export default function Galerii() {
@@ -14,7 +14,7 @@ export default function Galerii() {
       <div className="container">
         <h2 className="section-title">Galerii</h2>
         <p className="section-subtitle">
-          Hetked lavalt ja stuudiost. Klõpsa kujutlusvõimet ja kuula rütmi.
+          Hetked lavalt ja stuudiost.
         </p>
 
         <div className="gallery-grid">
@@ -23,7 +23,13 @@ export default function Galerii() {
               className={img.wide ? 'gallery-item wide' : 'gallery-item'}
               key={img.src}
             >
-              <img src={img.src} alt={img.alt} loading="lazy" />
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                width={img.w}
+                height={img.h}
+              />
             </div>
           ))}
         </div>

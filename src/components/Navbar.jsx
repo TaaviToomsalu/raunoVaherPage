@@ -20,14 +20,15 @@ export default function Navbar() {
 
         <button
           className="navbar-toggle"
-          aria-label="Ava menüü"
+          aria-label={open ? 'Sulge menüü' : 'Ava menüü'}
           aria-expanded={open}
+          aria-controls="navbar-menu"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? '✕' : '☰'}
+          <span aria-hidden="true">{open ? '✕' : '☰'}</span>
         </button>
 
-        <ul className={`navbar-links ${open ? 'open' : ''}`}>
+        <ul id="navbar-menu" className={`navbar-links ${open ? 'open' : ''}`}>
           {links.map((link) => (
             <li key={link.to}>
               <NavLink
