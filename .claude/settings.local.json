@@ -2,7 +2,17 @@
   "permissions": {
     "allow": [
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Read(//tmp/**)",
+      "Bash(curl -sI http://localhost:5173/esitlusvideo.mp4)",
+      "Bash(magick \"/home/taavit/Downloads/raunovaher/claudile/favicon.ico\" -resize 234x350 /tmp/favsrc.png)",
+      "Read(//home/taavit/.config/**)",
+      "Read(//home/taavit/**)",
+      "Bash(grep -il \"ux-design-reviewer\\\\|suggestion\\\\|recommend\\\\|accessibility\\\\|contrast\" 53bff86b-e556-41a9-96fc-1443b801cf02.jsonl e493c45c-3eee-44ec-b07f-af05b884e25b.jsonl 0b0e17d3-2eda-4de6-ab02-600980aa44b8.jsonl)",
+      "Bash(grep -l \"ux-design\" *.jsonl)",
+      "Bash(file *)",
+      "Bash(ffprobe -v error -show_entries stream=width,height,codec_name -of csv=p=0 public/esitlusvideo.mp4)",
+      "Bash(awk '{print $5, $9}')"
     ]
   }
 }

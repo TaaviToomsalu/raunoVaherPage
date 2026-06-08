@@ -1,29 +1,31 @@
+import { Link } from 'react-router-dom'
+
 const upcoming = [
-  { date: '14.06.2026', title: 'Suvefestival', place: 'Tallinn, Lauluväljak' },
-  { date: '02.07.2026', title: 'Jazzklubi õhtu', place: 'Tartu, Genialistide Klubi' },
-  { date: '23.08.2026', title: 'Eraüritus (pulm)', place: 'Pärnu' },
+  { date: '14.06.2026', venue: 'Suvefestival', city: 'Tallinn, Lauluväljak', band: 'Angus' },
+  { date: '02.07.2026', venue: 'Jazzklubi õhtu', city: 'Tartu, Genialistide Klubi', band: 'Odd Hugo' },
+  { date: '23.08.2026', venue: 'Eraüritus (pulm)', city: 'Pärnu', band: 'Emerald' },
 ]
 
 const past = [
-  { date: '12.04.2026', title: 'Kevadkontsert', place: 'Tallinn, Kultuurikatel' },
-  { date: '28.02.2026', title: 'Stuudiosalvestus', place: 'Tallinn' },
-  { date: '15.12.2025', title: 'Jõulukontsert', place: 'Viljandi, Pärimusmuusika Ait' },
+  { date: '12.04.2026', venue: 'Kevadkontsert', city: 'Tallinn, Kultuurikatel', band: 'Angus' },
+  { date: '28.02.2026', venue: 'Stuudiosalvestus', city: 'Tallinn', band: 'Odd Hugo' },
+  { date: '15.12.2025', venue: 'Jõulukontsert', city: 'Viljandi, Pärimusmuusika Ait', band: 'Emerald' },
 ]
 
-function Gig({ gig, type }) {
+function GigList({ gigs }) {
   return (
-    <div className="gig">
-      <span className="gig-date">{gig.date}</span>
-      <div className="gig-info">
-        <h3>
-          {gig.title}
-          <span className={`badge badge-${type}`}>
-            {type === 'upcoming' ? 'Tulemas' : 'Toimunud'}
-          </span>
-        </h3>
-        <p>{gig.place}</p>
-      </div>
-    </div>
+    <ul className="gigs-list">
+      {gigs.map((g) => (
+        <li className="gig" key={`${g.date}-${g.venue}`}>
+          <div className="gig-date">{g.date}</div>
+          <div>
+            <div className="gig-venue">{g.venue}</div>
+            <div className="gig-city">{g.city}</div>
+          </div>
+          <div className="gig-band">{g.band}</div>
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -31,23 +33,26 @@ export default function Esinemised() {
   return (
     <section className="section">
       <div className="container">
-        <h2 className="section-title">Esinemised</h2>
-        <p className="section-subtitle">
-          Tulevased ja varasemad esinemised. Soovid Rauno enda üritusele? Võta ühendust.
-        </p>
-
-        <h3 className="gigs-heading">Tulemas</h3>
-        <div className="gigs-list">
-          {upcoming.map((gig) => (
-            <Gig key={gig.date} gig={gig} type="upcoming" />
-          ))}
+        <div className="page-head">
+          <p className="eyebrow">Kalender</p>
+          <h1 className="page-title">Esinemised</h1>
+          <p className="section-subtitle">
+            Kus rütm järgmisena maandub. Soovid Rauno enda üritusele? Võta ühendust.
+          </p>
         </div>
 
-        <h3 className="gigs-heading">Varasemad</h3>
-        <div className="gigs-list">
-          {past.map((gig) => (
-            <Gig key={gig.date} gig={gig} type="past" />
-          ))}
+        <h2 className="rule-heading">Tulemas</h2>
+        <GigList gigs={upcoming} />
+
+        <h2 className="rule-heading" style={{ marginTop: '3.5rem' }}>
+          Varasemad
+        </h2>
+        <GigList gigs={past} />
+
+        <div style={{ marginTop: '3rem' }}>
+          <Link to="/kontakt" className="btn">
+            Broneeri kuupäev
+          </Link>
         </div>
       </div>
     </section>

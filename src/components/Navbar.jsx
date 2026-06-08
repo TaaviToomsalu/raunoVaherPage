@@ -15,7 +15,8 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="container navbar-inner">
         <NavLink to="/" className="navbar-brand" onClick={() => setOpen(false)}>
-          Rauno <span>Vaher</span>
+          <span className="dot" aria-hidden="true" />
+          Rauno Vaher
         </NavLink>
 
         <button

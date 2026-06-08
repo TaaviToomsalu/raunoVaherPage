@@ -9,6 +9,9 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-inner">
+        <div className="footer-brand">
+          Rauno <span className="accent">Vaher</span>
+        </div>
         <ul className="footer-social">
           {social.map((item) => {
             const ready = item.href && item.href !== '#'
@@ -35,7 +38,7 @@ export default function Footer() {
           })}
         </ul>
         <p className="footer-copy">
-          © {new Date().getFullYear()} Rauno Vaher. Kõik õigused kaitstud.
+          © {new Date().getFullYear()} — Rütm metsast kosmoseni.
         </p>
       </div>
     </footer>
