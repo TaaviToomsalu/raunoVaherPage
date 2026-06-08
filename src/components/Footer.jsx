@@ -1,3 +1,5 @@
+import { useLang } from '../i18n.jsx'
+
 const social = [
   { label: 'Instagram', href: '#' },
   { label: 'Facebook', href: '#' },
@@ -6,6 +8,8 @@ const social = [
 ]
 
 export default function Footer() {
+  const { t } = useLang()
+
   return (
     <footer className="footer">
       <div className="container footer-inner">
@@ -25,7 +29,7 @@ export default function Footer() {
                   <a
                     href="#"
                     aria-disabled="true"
-                    title="Peagi saadaval"
+                    title={t.contact.soonTitle}
                     tabIndex={-1}
                     onClick={(e) => e.preventDefault()}
                     style={{ opacity: 0.45, cursor: 'default' }}
@@ -38,7 +42,7 @@ export default function Footer() {
           })}
         </ul>
         <p className="footer-copy">
-          © {new Date().getFullYear()} — Rütm metsast kosmoseni.
+          © {new Date().getFullYear()} — {t.footer.tagline}
         </p>
       </div>
     </footer>

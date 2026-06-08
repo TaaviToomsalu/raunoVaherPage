@@ -1,16 +1,5 @@
 import { Link } from 'react-router-dom'
-
-const upcoming = [
-  { date: '14.06.2026', venue: 'Suvefestival', city: 'Tallinn, Lauluväljak', band: 'Angus' },
-  { date: '02.07.2026', venue: 'Jazzklubi õhtu', city: 'Tartu, Genialistide Klubi', band: 'Odd Hugo' },
-  { date: '23.08.2026', venue: 'Eraüritus (pulm)', city: 'Pärnu', band: 'Emerald' },
-]
-
-const past = [
-  { date: '12.04.2026', venue: 'Kevadkontsert', city: 'Tallinn, Kultuurikatel', band: 'Angus' },
-  { date: '28.02.2026', venue: 'Stuudiosalvestus', city: 'Tallinn', band: 'Odd Hugo' },
-  { date: '15.12.2025', venue: 'Jõulukontsert', city: 'Viljandi, Pärimusmuusika Ait', band: 'Emerald' },
-]
+import { useLang } from '../i18n.jsx'
 
 function GigList({ gigs }) {
   return (
@@ -30,28 +19,28 @@ function GigList({ gigs }) {
 }
 
 export default function Esinemised() {
+  const { t } = useLang()
+
   return (
     <section className="section">
       <div className="container">
         <div className="page-head">
-          <p className="eyebrow">Kalender</p>
-          <h1 className="page-title">Esinemised</h1>
-          <p className="section-subtitle">
-            Kus rütm järgmisena maandub. Soovid Rauno enda üritusele? Võta ühendust.
-          </p>
+          <p className="eyebrow">{t.events.eyebrow}</p>
+          <h1 className="page-title">{t.events.title}</h1>
+          <p className="section-subtitle">{t.events.subtitle}</p>
         </div>
 
-        <h2 className="rule-heading">Tulemas</h2>
-        <GigList gigs={upcoming} />
+        <h2 className="rule-heading">{t.events.upcoming}</h2>
+        <GigList gigs={t.events.upcomingGigs} />
 
         <h2 className="rule-heading" style={{ marginTop: '3.5rem' }}>
-          Varasemad
+          {t.events.past}
         </h2>
-        <GigList gigs={past} />
+        <GigList gigs={t.events.pastGigs} />
 
         <div style={{ marginTop: '3rem' }}>
           <Link to="/kontakt" className="btn">
-            Broneeri kuupäev
+            {t.events.btn}
           </Link>
         </div>
       </div>

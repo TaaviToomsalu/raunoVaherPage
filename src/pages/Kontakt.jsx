@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useLang } from '../i18n.jsx'
 
 const EMAIL = 'rauno.vaher@example.com'
 
 const socials = ['Instagram', 'Spotify', 'YouTube']
 
 export default function Kontakt() {
+  const { t } = useLang()
   const [form, setForm] = useState({ nimi: '', email: '', kuupaev: '', sonum: '' })
   const [saadetud, setSaadetud] = useState(false)
 
@@ -16,9 +18,10 @@ export default function Kontakt() {
   function handleSubmit(e) {
     e.preventDefault()
     // Backendit pole — avame kasutaja e-posti kliendi eeltäidetud sõnumiga.
-    const subject = encodeURIComponent(`Esinemise päring — ${form.nimi}`)
+    const m = t.contact.mail
+    const subject = encodeURIComponent(`${m.subject} — ${form.nimi}`)
     const body = encodeURIComponent(
-      `Nimi: ${form.nimi}\nE-post: ${form.email}\nSündmuse kuupäev: ${form.kuupaev || '—'}\n\n${form.sonum}`,
+      `${m.nameLabel}: ${form.nimi}\n${m.emailLabel}: ${form.email}\n${m.dateLabel}: ${form.kuupaev || '—'}\n\n${form.sonum}`,
     )
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
     setSaadetud(true)
@@ -28,24 +31,21 @@ export default function Kontakt() {
     <section className="section">
       <div className="container contact-grid">
         <div className="contact-info">
-          <p className="eyebrow">Ühendus</p>
-          <h1 className="page-title">Kontakt</h1>
-          <p className="section-subtitle">
-            Broneeringud, koostööd, salvestused, sessioonid — kirjuta julgelt.
-            Vastan tavaliselt 1–2 päeva jooksul.
-          </p>
+          <p className="eyebrow">{t.contact.eyebrow}</p>
+          <h1 className="page-title">{t.contact.title}</h1>
+          <p className="section-subtitle">{t.contact.subtitle}</p>
 
           <div className="contact-channels">
             <a
               className="contact-channel"
-              href={`mailto:${EMAIL}?subject=${encodeURIComponent('Esinemise päring')}`}
+              href={`mailto:${EMAIL}?subject=${encodeURIComponent(t.contact.mail.subject)}`}
             >
-              <div className="label">E-post</div>
+              <div className="label">{t.contact.emailLabel}</div>
               <div className="value">{EMAIL}</div>
             </a>
             <div className="contact-channel">
-              <div className="label">Asukoht</div>
-              <div className="value">Eesti</div>
+              <div className="label">{t.contact.locationLabel}</div>
+              <div className="value">{t.contact.locationValue}</div>
             </div>
             <ul className="footer-social" style={{ marginTop: '0.5rem' }}>
               {socials.map((s) => (
@@ -53,7 +53,7 @@ export default function Kontakt() {
                   <a
                     href="#"
                     aria-disabled="true"
-                    title="Peagi saadaval"
+                    title={t.contact.soonTitle}
                     tabIndex={-1}
                     onClick={(e) => e.preventDefault()}
                     style={{ opacity: 0.5, cursor: 'default' }}
@@ -68,13 +68,13 @@ export default function Kontakt() {
           <img
             className="contact-photo"
             src="/galerii/rauno-portree.jpg"
-            alt="Rauno Vaher lähivaates"
+            alt={t.contact.imgAlt}
           />
         </div>
 
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="nimi">Nimi</label>
+            <label htmlFor="nimi">{t.contact.form.name}</label>
             <input
               id="nimi"
               name="nimi"
@@ -82,12 +82,12 @@ export default function Kontakt() {
               value={form.nimi}
               onChange={handleChange}
               required
-              placeholder="Sinu nimi"
+              placeholder={t.contact.form.namePh}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">E-post</label>
+            <label htmlFor="email">{t.contact.form.email}</label>
             <input
               id="email"
               name="email"
@@ -95,12 +95,12 @@ export default function Kontakt() {
               value={form.email}
               onChange={handleChange}
               required
-              placeholder="sinu@email.ee"
+              placeholder={t.contact.form.emailPh}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="kuupaev">Sündmuse kuupäev</label>
+            <label htmlFor="kuupaev">{t.contact.form.date}</label>
             <input
               id="kuupaev"
               name="kuupaev"
@@ -111,7 +111,7 @@ export default function Kontakt() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="sonum">Sõnum</label>
+            <label htmlFor="sonum">{t.contact.form.message}</label>
             <textarea
               id="sonum"
               name="sonum"
@@ -119,20 +119,15 @@ export default function Kontakt() {
               value={form.sonum}
               onChange={handleChange}
               required
-              placeholder="Räägi oma üritusest või ideest — kuupäev, koht ja soovid."
+              placeholder={t.contact.form.messagePh}
             />
           </div>
 
           <button type="submit" className="btn">
-            Saada sõnum
+            {t.contact.form.submit}
           </button>
 
-          {saadetud && (
-            <p className="form-note">
-              Aitäh! Avasime sinu e-posti kliendi — vajuta seal „Saada", et
-              päring ära saata.
-            </p>
-          )}
+          {saadetud && <p className="form-note">{t.contact.form.sent}</p>}
         </form>
       </div>
     </section>

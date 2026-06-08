@@ -5,12 +5,15 @@ import Avaleht from './pages/Avaleht.jsx'
 import Galerii from './pages/Galerii.jsx'
 import Esinemised from './pages/Esinemised.jsx'
 import Kontakt from './pages/Kontakt.jsx'
+import { useLang } from './i18n.jsx'
 
 export default function App() {
+  const { t } = useLang()
+
   return (
     <div className="app">
       <a href="#main-content" className="skip-link">
-        Jäta navigatsioon vahele
+        {t.skip}
       </a>
       <Navbar />
       <main className="main" id="main-content">
@@ -27,15 +30,15 @@ export default function App() {
                   className="container"
                   style={{ textAlign: 'center', paddingTop: '4rem' }}
                 >
-                  <h2 className="section-title">Lehte ei leitud</h2>
+                  <h2 className="section-title">{t.notFound.title}</h2>
                   <p
                     className="section-subtitle"
                     style={{ margin: '0 auto 2rem' }}
                   >
-                    Seda lehte ei eksisteeri. Naase avalehele.
+                    {t.notFound.text}
                   </p>
                   <Link to="/" className="btn">
-                    Avaleht
+                    {t.notFound.btn}
                   </Link>
                 </div>
               </section>
