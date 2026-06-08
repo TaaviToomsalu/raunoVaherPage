@@ -1,10 +1,8 @@
 import { useLang } from '../i18n.jsx'
 
 const social = [
-  { label: 'Instagram', href: '#' },
-  { label: 'Facebook', href: '#' },
-  { label: 'YouTube', href: '#' },
-  { label: 'Spotify', href: '#' },
+  { label: 'Instagram', href: 'https://www.instagram.com/matslaav/' },
+  { label: 'Facebook', href: 'https://www.facebook.com/matslaav' },
 ]
 
 export default function Footer() {

@@ -1,14 +1,25 @@
 import { useState } from 'react'
 import { useLang } from '../i18n.jsx'
 
-const EMAIL = 'rauno.vaher@example.com'
+const EMAIL = 'vaher.rauno@gmail.com'
 
-const socials = ['Instagram', 'Spotify', 'YouTube']
+const socials = [
+  { label: 'Instagram', href: 'https://www.instagram.com/matslaav/' },
+  { label: 'Facebook', href: 'https://www.facebook.com/matslaav' },
+]
+
+const FORM_NAME = 'kontakt'
+
+function encode(data) {
+  return Object.keys(data)
+    .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(data[k])}`)
+    .join('&')
+}
 
 export default function Kontakt() {
   const { t } = useLang()
-  const [form, setForm] = useState({ nimi: '', email: '', kuupaev: '', sonum: '' })
-  const [saadetud, setSaadetud] = useState(false)
+  const [form, setForm] = useState({ nimi: '', email: '', sonum: '' })
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -17,14 +28,18 @@ export default function Kontakt() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    // Backendit pole — avame kasutaja e-posti kliendi eeltäidetud sõnumiga.
-    const m = t.contact.mail
-    const subject = encodeURIComponent(`${m.subject} — ${form.nimi}`)
-    const body = encodeURIComponent(
-      `${m.nameLabel}: ${form.nimi}\n${m.emailLabel}: ${form.email}\n${m.dateLabel}: ${form.kuupaev || '—'}\n\n${form.sonum}`,
-    )
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
-    setSaadetud(true)
+    setStatus('sending')
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': FORM_NAME, ...form }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Network response was not ok')
+        setStatus('sent')
+        setForm({ nimi: '', email: '', sonum: '' })
+      })
+      .catch(() => setStatus('error'))
   }
 
   return (
@@ -49,16 +64,9 @@ export default function Kontakt() {
             </div>
             <ul className="footer-social" style={{ marginTop: '0.5rem' }}>
               {socials.map((s) => (
-                <li key={s}>
-                  <a
-                    href="#"
-                    aria-disabled="true"
-                    title={t.contact.soonTitle}
-                    tabIndex={-1}
-                    onClick={(e) => e.preventDefault()}
-                    style={{ opacity: 0.5, cursor: 'default' }}
-                  >
-                    {s}
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer">
+                    {s.label}
                   </a>
                 </li>
               ))}
@@ -72,7 +80,22 @@ export default function Kontakt() {
           />
         </div>
 
-        <form className="form" onSubmit={handleSubmit}>
+        <form
+          className="form"
+          name={FORM_NAME}
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+        >
+          {/* Netlify vajab vormi nime peidetud väljana ka päris vormis */}
+          <input type="hidden" name="form-name" value={FORM_NAME} />
+          <p hidden>
+            <label>
+              Ära täida seda välja: <input name="bot-field" />
+            </label>
+          </p>
+
           <div className="form-group">
             <label htmlFor="nimi">{t.contact.form.name}</label>
             <input
@@ -100,17 +123,6 @@ export default function Kontakt() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="kuupaev">{t.contact.form.date}</label>
-            <input
-              id="kuupaev"
-              name="kuupaev"
-              type="date"
-              value={form.kuupaev}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
             <label htmlFor="sonum">{t.contact.form.message}</label>
             <textarea
               id="sonum"
@@ -123,11 +135,14 @@ export default function Kontakt() {
             />
           </div>
 
-          <button type="submit" className="btn">
-            {t.contact.form.submit}
+          <button type="submit" className="btn" disabled={status === 'sending'}>
+            {status === 'sending' ? t.contact.form.sending : t.contact.form.submit}
           </button>
 
-          {saadetud && <p className="form-note">{t.contact.form.sent}</p>}
+          {status === 'sent' && <p className="form-note">{t.contact.form.sent}</p>}
+          {status === 'error' && (
+            <p className="form-note">{t.contact.form.error}</p>
+          )}
         </form>
       </div>
     </section>

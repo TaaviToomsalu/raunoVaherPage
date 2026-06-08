@@ -1,4 +1,5 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Avaleht from './pages/Avaleht.jsx'
@@ -7,11 +8,20 @@ import Esinemised from './pages/Esinemised.jsx'
 import Kontakt from './pages/Kontakt.jsx'
 import { useLang } from './i18n.jsx'
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
 export default function App() {
   const { t } = useLang()
 
   return (
     <div className="app">
+      <ScrollToTop />
       <a href="#main-content" className="skip-link">
         {t.skip}
       </a>
