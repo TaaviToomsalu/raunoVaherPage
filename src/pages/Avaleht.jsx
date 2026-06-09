@@ -16,7 +16,7 @@ export default function Avaleht() {
         <div className="container hero-inner">
           <p className="eyebrow">{t.hero.eyebrow}</p>
           <h1 className="hero-title">
-            Rauno <br />
+            Rauno
             <span className="accent">Vaher</span>
           </h1>
           <p className="hero-text">{t.hero.text}</p>

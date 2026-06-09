@@ -346,6 +346,11 @@ img {
 
 .hero-title .accent {
   color: var(--primary);
+  display: block;
+  /* väike vahe "Rauno" ja "Vaher" vahele */
+  margin-top: 0.06em;
+  /* nihuta V vasak äär kohakuti R vasaku tüvega (Antoni side-bearing kompensatsioon) */
+  margin-left: 0.02em;
 }
 
 .hero-text {
