@@ -26,9 +26,18 @@ export default function Kontakt() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  async function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
   setStatus("sending");
+
+  const payload = {
+    nimi: form.nimi,
+    email: form.email,
+    message: form.sonum
+  };
+
+  console.log("FORM STATE:", form);
+  console.log("SENDING PAYLOAD:", payload);
 
   try {
     const res = await fetch("https://formspree.io/f/mkoabpgw", {
@@ -37,18 +46,22 @@ export default function Kontakt() {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({
-        nimi: form.nimi,
-        email: form.email,
-        message: form.sonum
-      })
+      body: JSON.stringify(payload)
     });
+
+    console.log("RESPONSE STATUS:", res.status);
+    console.log("RESPONSE OK:", res.ok);
+
+    const data = await res.text();
+    console.log("FORMSPREE RESPONSE:", data);
 
     if (!res.ok) throw new Error("Formspree error");
 
     setStatus("sent");
     setForm({ nimi: "", email: "", sonum: "" });
+
   } catch (err) {
+    console.log("ERROR:", err);
     setStatus("error");
   }
 }
