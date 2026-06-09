@@ -40,7 +40,7 @@ export default function Footer() {
           })}
         </ul>
         <p className="footer-copy">
-          © {new Date().getFullYear()} — {t.footer.tagline}
+          © {new Date().getFullYear()} — TaaviCode
         </p>
       </div>
     </footer>
