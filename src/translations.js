@@ -90,6 +90,25 @@ export const translations = {
       ],
     },
 
+    matslaav: {
+      eyebrow: 'Muusikaprojekt',
+      title: 'Mats Laav',
+      subtitle: 'Muusikaline kehastus',
+      text: 'Mats Laav on Rauno Vaheri muusikaline alter ego. Orgaanilise house’i, hõimurütmide, elavate instrumentide, hääle ja elektrooniliste helimaastike kaudu loob Mats Laav muusikat, mis ühendab tantsupõranda ja sisemise rännaku.',
+      imgAlt: 'Mats Laav — Rauno Vaheri muusikaline kehastus',
+      btn: 'Kuula siin',
+    },
+
+    testimonials: {
+      eyebrow: 'Tagasiside',
+      title: 'Inimeste sõnad',
+      quotes: [
+        'Rauno loob ruumi, kus inimesed saavad olla päriselt nemad ise.',
+        'Saunarituaal puudutas mind sügavamalt, kui oskasin oodata.',
+        'Tema trummimängus on midagi ürgset ja elusat.',
+      ],
+    },
+
     video: {
       eyebrow: 'Kuula & vaata',
       title: 'Video',
@@ -255,6 +274,25 @@ export const translations = {
           ],
           foot: 'Each session is tailored to your needs.',
         },
+      ],
+    },
+
+    matslaav: {
+      eyebrow: 'Music Project',
+      title: 'Mats Laav',
+      subtitle: 'A musical alter ego',
+      text: 'Mats Laav is the musical alter ego of Rauno Vaher. Blending organic house, tribal rhythms, live instruments, vocals, and electronic soundscapes, Mats Laav creates music that bridges the dance floor and the inner journey.',
+      imgAlt: 'Mats Laav — the musical alter ego of Rauno Vaher',
+      btn: 'Listen Here',
+    },
+
+    testimonials: {
+      eyebrow: 'Testimonials',
+      title: 'What People Say',
+      quotes: [
+        'Rauno creates a space where people feel safe, open, and connected.',
+        'The sauna ritual was one of the most powerful experiences I have had.',
+        'His drumming carries something ancient and deeply alive.',
       ],
     },
 

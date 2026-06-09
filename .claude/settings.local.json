@@ -13,7 +13,8 @@
       "Bash(file *)",
       "Bash(ffprobe -v error -show_entries stream=width,height,codec_name -of csv=p=0 public/esitlusvideo.mp4)",
       "Bash(awk '{print $5, $9}')",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(npx vite *)"
     ]
   }
 }

@@ -81,6 +81,46 @@ export default function Avaleht() {
         </div>
       </section>
 
+      {/* Mats Laav */}
+      <section className="section matslaav">
+        <div className="container">
+          <div className="matslaav-panel">
+            <span className="matslaav-wordmark" aria-hidden="true">
+              Mats Laav
+            </span>
+            <div className="matslaav-body">
+              <p className="eyebrow">{t.matslaav.eyebrow}</p>
+              <h2 className="section-title">{t.matslaav.title}</h2>
+              <p className="matslaav-subtitle">{t.matslaav.subtitle}</p>
+              <p className="matslaav-text">{t.matslaav.text}</p>
+              <div className="matslaav-actions">
+                <button type="button" className="btn">
+                  {t.matslaav.btn}
+                </button>
+              </div>
+            </div>
+            <div className="matslaav-media">
+              <img src="/galerii/raunokosmos.jpg" alt={t.matslaav.imgAlt} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section testimonials">
+        <div className="container">
+          <p className="eyebrow">{t.testimonials.eyebrow}</p>
+          <h2 className="section-title">{t.testimonials.title}</h2>
+          <div className="testimonials-grid">
+            {t.testimonials.quotes.map((quote, i) => (
+              <figure className="testimonial" key={i}>
+                <blockquote>{quote}</blockquote>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Video */}
       <section className="section">
         <div className="container">
@@ -102,7 +142,7 @@ export default function Avaleht() {
         <div className="container cta-inner">
           <img
             className="cta-avatar"
-            src="/galerii/raunokosmos.jpg"
+            src="/apple-touch-icon.png"
             alt=""
             aria-hidden="true"
           />

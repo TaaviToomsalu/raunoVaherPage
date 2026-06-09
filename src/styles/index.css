@@ -511,6 +511,134 @@ img {
   font-style: italic;
 }
 
+/* Mats Laav — muusikaprojekti plokk */
+.matslaav {
+  position: relative;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.matslaav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 80% at 85% 50%,
+    rgba(232, 93, 58, 0.12) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.matslaav-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.matslaav-wordmark {
+  position: absolute;
+  top: -3.5rem;
+  left: -0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 16vw, 12rem);
+  line-height: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: rgba(244, 244, 244, 0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.matslaav-body {
+  position: relative;
+  z-index: 1;
+}
+
+.matslaav-body .section-title {
+  margin: 0.4rem 0 0.75rem;
+}
+
+.matslaav-subtitle {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.05rem;
+  color: var(--primary-text);
+  margin-bottom: 1.5rem;
+}
+
+.matslaav-text {
+  color: var(--muted);
+  font-size: 1.15rem;
+  line-height: 1.75;
+  max-width: 44ch;
+}
+
+.matslaav-actions {
+  margin-top: 2.25rem;
+}
+
+.matslaav-media {
+  position: relative;
+  z-index: 1;
+}
+
+.matslaav-media img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--border-strong), 0 0 60px rgba(232, 93, 58, 0.25);
+}
+
+/* Inimeste sõnad — tsitaadikaardid */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.testimonial {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem 2.25rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.testimonial::before {
+  content: '“';
+  position: absolute;
+  top: -1.25rem;
+  right: 1rem;
+  font-family: var(--font-display);
+  font-size: 7rem;
+  line-height: 1;
+  color: rgba(232, 93, 58, 0.18);
+  pointer-events: none;
+}
+
+.testimonial:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.testimonial blockquote {
+  position: relative;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  font-style: italic;
+  color: var(--text);
+}
+
 /* Video */
 .video-wrapper {
   position: relative;
@@ -881,8 +1009,18 @@ a.contact-channel:hover .value {
     gap: 2.5rem;
   }
 
-  .path-grid {
+  .path-grid,
+  .testimonials-grid {
     grid-template-columns: 1fr;
+  }
+
+  .matslaav-panel {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .matslaav-media {
+    max-width: 360px;
   }
 
   .section {
