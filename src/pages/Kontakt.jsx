@@ -31,7 +31,7 @@ export default function Kontakt() {
   setStatus("sending");
 
   try {
-    const res = await fetch("/api/contact", {
+    const res = await fetch("https://formspree.io/f/mkoabpgw", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
