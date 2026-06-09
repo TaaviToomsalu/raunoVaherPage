@@ -26,21 +26,28 @@ export default function Kontakt() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    setStatus('sending')
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': FORM_NAME, ...form }),
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error('Network response was not ok')
-        setStatus('sent')
-        setForm({ nimi: '', email: '', sonum: '' })
-      })
-      .catch(() => setStatus('error'))
+  async function handleSubmit(e) {
+  e.preventDefault();
+
+  setStatus("sending");
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    if (!res.ok) throw new Error("Request failed");
+
+    setStatus("sent");
+    setForm({ nimi: "", email: "", sonum: "" });
+  } catch (err) {
+    setStatus("error");
   }
+}
 
   return (
     <section className="section">
@@ -80,21 +87,7 @@ export default function Kontakt() {
           />
         </div>
 
-        <form
-          className="form"
-          name={FORM_NAME}
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
-        >
-          {/* Netlify vajab vormi nime peidetud väljana ka päris vormis */}
-          <input type="hidden" name="form-name" value={FORM_NAME} />
-          <p hidden>
-            <label>
-              Ära täida seda välja: <input name="bot-field" />
-            </label>
-          </p>
+        <form className="form" onSubmit={handleSubmit}>
 
           <div className="form-group">
             <label htmlFor="nimi">{t.contact.form.name}</label>
