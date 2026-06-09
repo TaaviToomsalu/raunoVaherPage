@@ -28,19 +28,23 @@ export default function Kontakt() {
 
   async function handleSubmit(e) {
   e.preventDefault();
-
   setStatus("sending");
 
   try {
-    const res = await fetch("/api/contact", {
+    const res = await fetch("https://formspree.io/f/mkoabpgw", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json"
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify({
+        nimi: form.nimi,
+        email: form.email,
+        message: form.sonum
+      })
     });
 
-    if (!res.ok) throw new Error("Request failed");
+    if (!res.ok) throw new Error("Formspree error");
 
     setStatus("sent");
     setForm({ nimi: "", email: "", sonum: "" });
