@@ -40,7 +40,7 @@ export default function Kontakt() {
       body: JSON.stringify({
         nimi: form.nimi,
         email: form.email,
-        sonum: form.sonum
+        message: form.sonum
       })
     });
 
