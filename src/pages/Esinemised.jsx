@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLang } from '../i18n.jsx'
+import { fetchGigs } from '../lib/calendar.js'
 
 function GigList({ gigs }) {
   return (
@@ -20,6 +22,25 @@ function GigList({ gigs }) {
 
 export default function Esinemised() {
   const { t } = useLang()
+  // Algväärtus translationsist — leht näitab kohe sisu, kalender asendab pärast.
+  const [gigs, setGigs] = useState({
+    upcoming: t.events.upcomingGigs,
+    past: t.events.pastGigs,
+  })
+
+  useEffect(() => {
+    let active = true
+    fetchGigs()
+      .then((data) => {
+        if (active) setGigs(data)
+      })
+      .catch((err) => {
+        console.error('Kalendri laadimine ebaõnnestus, kasutan varuandmeid', err)
+      })
+    return () => {
+      active = false
+    }
+  }, [])
 
   return (
     <section className="section">
@@ -31,12 +52,12 @@ export default function Esinemised() {
         </div>
 
         <h2 className="rule-heading">{t.events.upcoming}</h2>
-        <GigList gigs={t.events.upcomingGigs} />
+        <GigList gigs={gigs.upcoming} />
 
         <h2 className="rule-heading" style={{ marginTop: '3.5rem' }}>
           {t.events.past}
         </h2>
-        <GigList gigs={t.events.pastGigs} />
+        <GigList gigs={gigs.past} />
 
         <div style={{ marginTop: '3rem' }}>
           <Link to="/kontakt" className="btn">
