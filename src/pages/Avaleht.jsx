@@ -93,11 +93,13 @@ export default function Avaleht() {
               <h2 className="section-title">{t.matslaav.title}</h2>
               <p className="matslaav-subtitle">{t.matslaav.subtitle}</p>
               <p className="matslaav-text">{t.matslaav.text}</p>
-              <div className="matslaav-actions">
+              {/* Kuula siin -nupp peidetud — kuulamislink puudub veel.
+                  Eemalda kommentaar, kui link on olemas. */}
+              {/* <div className="matslaav-actions">
                 <button type="button" className="btn">
                   {t.matslaav.btn}
                 </button>
-              </div>
+              </div> */}
             </div>
             <div className="matslaav-media">
               <img src="/galerii/raunokosmos.jpg" alt={t.matslaav.imgAlt} />

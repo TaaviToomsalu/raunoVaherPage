@@ -25,16 +25,22 @@ npm run preview    # eelvaade tootmisversioonist
 - **Esinemised** — tulevased ja varasemad esinemised
 - **Kontakt** — kontaktivorm (mailto, backendita)
 
-## Netlify deploy
+## Deploy (nginx)
 
-Projekt on kohe deployitav:
+Build tehakse lokaalselt ja `dist/` sisu serveeritakse nginx-iga:
 
-- Build käsk: `npm run build`
-- Publish kaust: `dist`
-- SPA redirect on seadistatud failides `netlify.toml` ja `public/_redirects`
-  (`/* /index.html 200`)
+```bash
+npm run build      # tekitab dist/ kausta
+```
 
-Lohista projekt Netlify'sse või ühenda Git repo — seadistust pole vaja muuta.
+Kopeeri `dist/` sisu serveri veebijuurikasse. nginx server block peab
+SPA jaoks suunama kõik teed `index.html`-ile:
+
+```nginx
+location / {
+    try_files $uri $uri/ /index.html;
+}
+```
 
 ## Struktuur
 
