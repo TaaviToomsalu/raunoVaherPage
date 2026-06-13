@@ -48,9 +48,11 @@ export default function Esinemised() {
           <p className="section-subtitle">{t.events.subtitle}</p>
         </div>
 
-        <h2 className="rule-heading">{t.events.upcoming}</h2>
         {gigs.upcoming.length > 0 ? (
-          <GigList gigs={gigs.upcoming} />
+          <>
+            <h2 className="rule-heading">{t.events.upcoming}</h2>
+            <GigList gigs={gigs.upcoming} />
+          </>
         ) : (
           <p className="section-subtitle" style={{ marginTop: '2rem' }}>
             {t.events.comingSoon}

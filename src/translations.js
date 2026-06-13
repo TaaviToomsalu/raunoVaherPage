@@ -140,7 +140,7 @@ export const translations = {
       subtitle: 'Kus rütm järgmisena maandub. Soovid Rauno enda üritusele? Võta ühendust.',
       upcoming: 'Tulemas',
       past: 'Varasemad',
-      comingSoon: 'Esinemiste info on peagi tulekul.',
+      comingSoon: 'Hetkel pole sündmusi kuvada.',
       btn: 'Broneeri kuupäev',
       upcomingGigs: [
         { date: '14.06.2026', venue: 'Suvefestival', city: 'Tallinn, Lauluväljak', band: 'Angus' },
@@ -328,7 +328,7 @@ export const translations = {
       subtitle: 'Where the rhythm lands next. Want Rauno at your event? Get in touch.',
       upcoming: 'Upcoming',
       past: 'Past',
-      comingSoon: 'Event info coming soon.',
+      comingSoon: 'No events to display at the moment.',
       btn: 'Book a date',
       upcomingGigs: [
         { date: '14.06.2026', venue: 'Summer Festival', city: 'Tallinn, Song Festival Grounds', band: 'Angus' },
