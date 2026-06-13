@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom'
 import { useLang } from '../i18n.jsx'
 import { fetchGigs } from '../lib/calendar.js'
 
-// Klient pole kalendrit veel valmis seadnud — peidame esinemiste nimekirja ja
-// näitame "info tulekul" teadet. Sea väärtuseks true, et kalender taas sisse lülitada.
-const SHOW_GIGS = false
-
 function GigList({ gigs }) {
   return (
     <ul className="gigs-list">
@@ -26,11 +22,8 @@ function GigList({ gigs }) {
 
 export default function Esinemised() {
   const { t } = useLang()
-  // Algväärtus translationsist — leht näitab kohe sisu, kalender asendab pärast.
-  const [gigs, setGigs] = useState({
-    upcoming: t.events.upcomingGigs,
-    past: t.events.pastGigs,
-  })
+  // Algväärtus tühi — kalender täidab nimekirja, kuni selleni näitame "tulekul".
+  const [gigs, setGigs] = useState({ upcoming: [], past: [] })
 
   useEffect(() => {
     let active = true
@@ -55,20 +48,22 @@ export default function Esinemised() {
           <p className="section-subtitle">{t.events.subtitle}</p>
         </div>
 
-        {SHOW_GIGS ? (
-          <>
-            <h2 className="rule-heading">{t.events.upcoming}</h2>
-            <GigList gigs={gigs.upcoming} />
+        <h2 className="rule-heading">{t.events.upcoming}</h2>
+        {gigs.upcoming.length > 0 ? (
+          <GigList gigs={gigs.upcoming} />
+        ) : (
+          <p className="section-subtitle" style={{ marginTop: '2rem' }}>
+            {t.events.comingSoon}
+          </p>
+        )}
 
+        {gigs.past.length > 0 && (
+          <>
             <h2 className="rule-heading" style={{ marginTop: '3.5rem' }}>
               {t.events.past}
             </h2>
             <GigList gigs={gigs.past} />
           </>
-        ) : (
-          <p className="section-subtitle" style={{ marginTop: '2rem' }}>
-            {t.events.comingSoon}
-          </p>
         )}
 
         <div style={{ marginTop: '3rem' }}>
