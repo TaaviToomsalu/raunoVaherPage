@@ -25,5 +25,5 @@ jobs:
           ssh -i ~/.ssh/id_ed25519 taavi@45.32.152.152 '
             cd /var/www/raunoVaherPage &&
             git pull &&
-            sudo docker-compose up -d --build
+            docker-compose up -d --build
           '
