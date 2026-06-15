@@ -10,7 +10,7 @@ export default function Avaleht() {
       {/* Hero */}
       <section className="hero">
         <div className="hero-bg">
-          <img src="/galerii/metsikrauno.jpg" alt={t.hero.imgAlt} />
+          <img src="/images/metsikrauno.jpg" alt={t.hero.imgAlt} />
           <div className="grain" aria-hidden="true" />
         </div>
         <div className="container hero-inner">
@@ -35,7 +35,7 @@ export default function Avaleht() {
       <section className="section">
         <div className="container bio">
           <div className="bio-photo">
-            <img src="/galerii/rauno.jpg" alt={t.bio.imgAlt} />
+            <img src="/images/rauno.jpg" alt={t.bio.imgAlt} />
           </div>
           <div className="bio-body">
             <p className="eyebrow">{t.bio.eyebrow}</p>
@@ -102,7 +102,7 @@ export default function Avaleht() {
               </div> */}
             </div>
             <div className="matslaav-media">
-              <img src="/galerii/raunokosmos.jpg" alt={t.matslaav.imgAlt} />
+              <img src="/images/raunokosmos.jpg" alt={t.matslaav.imgAlt} />
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function Avaleht() {
       {/* CTA */}
       <section className="cta">
         <div className="cta-bg">
-          <img src="/galerii/raunolilledes.jpg" alt="" aria-hidden="true" />
+          <img src="/images/raunolilledes.jpg" alt="" aria-hidden="true" />
         </div>
         <div className="container cta-inner">
           <img
