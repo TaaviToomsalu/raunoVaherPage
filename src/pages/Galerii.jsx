@@ -1,14 +1,14 @@
 import { useLang } from '../i18n.jsx'
 
-// Rauno Vaheri fotod (asuvad public/galerii/ kaustas).
+// Rauno Vaheri fotod (asuvad public/images/ kaustas).
 // wide: true → laiad fotod lähevad terve galerii laiuse peale (suuremad).
 // alt-tekstid tulevad tõlkefailist (sama järjekord kui siin).
 const images = [
-  { src: '/galerii/raunokosmos.jpg', w: 513, h: 700 },
-  { src: '/galerii/rauno.jpg', w: 1280, h: 1600 },
-  { src: '/galerii/rauno-portree.jpg', w: 356, h: 474 },
-  { src: '/galerii/metsikrauno.jpg', wide: true, w: 1600, h: 1066 },
-  { src: '/galerii/raunolilledes.jpg', wide: true, w: 1600, h: 830 },
+  { src: '/images/raunokosmos.jpg', w: 513, h: 700 },
+  { src: '/images/rauno.jpg', w: 1280, h: 1600 },
+  { src: '/images/rauno-portree.jpg', w: 356, h: 474 },
+  { src: '/images/metsikrauno.jpg', wide: true, w: 1600, h: 1066 },
+  { src: '/images/raunolilledes.jpg', wide: true, w: 1600, h: 830 },
 ]
 
 export default function Galerii() {
