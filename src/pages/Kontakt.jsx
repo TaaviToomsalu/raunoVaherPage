@@ -99,7 +99,7 @@ async function handleSubmit(e) {
 
           <img
             className="contact-photo"
-            src="/galerii/rauno-portree.jpg"
+            src="/images/rauno-portree.jpg"
             alt={t.contact.imgAlt}
           />
         </div>
