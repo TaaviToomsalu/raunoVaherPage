@@ -122,15 +122,27 @@ export const translations = {
     },
 
     gallery: {
-      eyebrow: 'Pildid',
+      eyebrow: 'Pildid ja videod',
       title: 'Galerii',
-      subtitle: 'Hetked metsast, lavalt ja kuskilt nende vahel.',
-      alts: [
+      subtitle: 'Hetked ja videod metsast, lavalt ja kuskilt nende vahel.',
+      // Järjekord sama nagu items-massiivis failis Galerii.jsx.
+      captions: [
         'Rauno Vaher — stuudios',
         'Rauno Vaher portree',
         'Rauno Vaher lähivaates',
         'Rauno Vaher trummide taga — energiline esitus',
         'Rauno Vaher lavalt',
+        'Trummisoolo — live',
+        'DJ Henessi & Mats Laav — live',
+        'Mats Laav & MC Etsistents — live',
+        'Kehahääle ring firmapeol',
+        'DJ Keshob & Mats Laav — live',
+        'Pärimusmuusika pidu',
+        'Rauno Vaher — esinemiselt',
+        'Rauno Vaher — laval',
+        'Rauno Vaher — portree',
+        'Rauno Vaher — esinemiselt',
+        'Rauno Vaher — portree',
       ],
     },
 
@@ -310,15 +322,27 @@ export const translations = {
     },
 
     gallery: {
-      eyebrow: 'Photos',
+      eyebrow: 'Photos and videos',
       title: 'Gallery',
-      subtitle: 'Moments from the forest, the stage, and somewhere in between.',
-      alts: [
+      subtitle: 'Moments and videos from the forest, the stage, and somewhere in between.',
+      // Order matches the items array in Galerii.jsx.
+      captions: [
         'Rauno Vaher — in the studio',
         'Portrait of Rauno Vaher',
         'Rauno Vaher up close',
         'Rauno Vaher behind the drums — an energetic performance',
         'Rauno Vaher on stage',
+        'Drum solo — live',
+        'DJ Henessi & Mats Laav — live',
+        'Mats Laav & MC Etsistents — live',
+        'Body-voice circle at a company party',
+        'DJ Keshob & Mats Laav — live',
+        'Folk music celebration',
+        'Rauno Vaher — performing',
+        'Rauno Vaher — on stage',
+        'Rauno Vaher — portrait',
+        'Rauno Vaher — performing',
+        'Rauno Vaher — portrait',
       ],
     },
 
