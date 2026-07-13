@@ -6,6 +6,30 @@ export const translations = {
   et: {
     skip: 'Jäta navigatsioon vahele',
 
+    // Per-lehe SEO. `title` läheb <title>-sse, `description` meta-tag'i ja OG-sse.
+    seo: {
+      home: {
+        title: 'Rauno Vaher — trummar, muusik ja rituaalide läbiviija',
+        description:
+          'Trummar, muusik ja rituaalide läbiviija Rauno Vaher — kontserdid, saunarituaalid, trummiõpetus ja muusikaprojekt Mats Laav. Broneeri esinemine.',
+      },
+      gallery: {
+        title: 'Galerii — Rauno Vaher',
+        description:
+          'Fotod ja videod Rauno Vaheri esinemistelt, lavalt ja stuudiost — trummid, hääl ja Mats Laav.',
+      },
+      events: {
+        title: 'Esinemised — Rauno Vaher',
+        description:
+          'Rauno Vaheri tulevased ja varasemad esinemised. Soovid Rauno enda üritusele? Võta ühendust.',
+      },
+      contact: {
+        title: 'Kontakt — Rauno Vaher',
+        description:
+          'Võta Rauno Vaheriga ühendust — broneeringud, koostööd, salvestused ja sessioonid. Vastan tavaliselt 1–2 päeva jooksul.',
+      },
+    },
+
     nav: {
       home: 'Avaleht',
       gallery: 'Galerii',
@@ -205,6 +229,29 @@ export const translations = {
 
   en: {
     skip: 'Skip to content',
+
+    seo: {
+      home: {
+        title: 'Rauno Vaher — Drummer, Musician & Ritual Facilitator',
+        description:
+          'Drummer, musician and ritual facilitator Rauno Vaher — concerts, sauna rituals, drum lessons and the music project Mats Laav. Book a performance.',
+      },
+      gallery: {
+        title: 'Gallery — Rauno Vaher',
+        description:
+          'Photos and videos from Rauno Vaher’s performances, stage and studio — drums, voice and Mats Laav.',
+      },
+      events: {
+        title: 'Events — Rauno Vaher',
+        description:
+          'Rauno Vaher’s upcoming and past performances. Want Rauno at your event? Get in touch.',
+      },
+      contact: {
+        title: 'Contact — Rauno Vaher',
+        description:
+          'Get in touch with Rauno Vaher — bookings, collaborations, recordings and sessions. I usually reply within 1–2 days.',
+      },
+    },
 
     nav: {
       home: 'Home',

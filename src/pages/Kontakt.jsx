@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Seo from '../components/Seo.jsx'
 import { useLang } from '../i18n.jsx'
 
 const EMAIL = 'vaher.rauno@gmail.com'
@@ -68,6 +69,7 @@ async function handleSubmit(e) {
 
   return (
     <section className="section">
+      <Seo pageKey="contact" />
       <div className="container contact-grid">
         <div className="contact-info">
           <p className="eyebrow">{t.contact.eyebrow}</p>
@@ -101,6 +103,8 @@ async function handleSubmit(e) {
             className="contact-photo"
             src="/images/rauno-portree.jpg"
             alt={t.contact.imgAlt}
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

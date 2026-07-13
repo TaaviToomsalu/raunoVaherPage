@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import Seo from '../components/Seo.jsx'
 import { useLang } from '../i18n.jsx'
 
 // Galerii sisu (pildid public/images/, videod public/videos/ kaustas).
@@ -73,6 +74,7 @@ export default function Galerii() {
 
   return (
     <section className="section">
+      <Seo pageKey="gallery" />
       <div className="container">
         <div className="page-head">
           <p className="eyebrow">{t.gallery.eyebrow}</p>

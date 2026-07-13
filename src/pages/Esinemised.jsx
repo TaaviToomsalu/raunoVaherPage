@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Seo from '../components/Seo.jsx'
 import { useLang } from '../i18n.jsx'
 import { fetchGigs } from '../lib/calendar.js'
 
@@ -21,7 +22,7 @@ function GigList({ gigs }) {
 }
 
 export default function Esinemised() {
-  const { t } = useLang()
+  const { t, to } = useLang()
   // Algväärtus tühi — kalender täidab nimekirja, kuni selleni näitame "tulekul".
   const [gigs, setGigs] = useState({ upcoming: [], past: [] })
 
@@ -41,6 +42,7 @@ export default function Esinemised() {
 
   return (
     <section className="section">
+      <Seo pageKey="events" />
       <div className="container">
         <div className="page-head">
           <p className="eyebrow">{t.events.eyebrow}</p>
@@ -69,7 +71,7 @@ export default function Esinemised() {
         )}
 
         <div style={{ marginTop: '3rem' }}>
-          <Link to="/kontakt" className="btn">
+          <Link to={to('contact')} className="btn">
             {t.events.btn}
           </Link>
         </div>

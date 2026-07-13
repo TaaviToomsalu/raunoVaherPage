@@ -1,12 +1,35 @@
 import { Link } from 'react-router-dom'
+import { Head } from 'vite-react-ssg'
 import VideoEmbed from '../components/VideoEmbed.jsx'
+import Seo from '../components/Seo.jsx'
 import { useLang } from '../i18n.jsx'
+import { SITE_URL } from '../lib/routes-i18n.js'
 
 export default function Avaleht() {
-  const { t } = useLang()
+  const { t, to, lang } = useLang()
+
+  // Struktuurandmed (Schema.org Person) — aitab Google'il siduda Rauno
+  // isiku ja tema kanalid (rich results / knowledge panel).
+  const personLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Rauno Vaher',
+    url: SITE_URL + '/',
+    jobTitle: lang === 'en' ? 'Musician & Drummer' : 'Muusik ja trummar',
+    image: SITE_URL + '/images/rauno.jpg',
+    sameAs: [
+      'https://www.instagram.com/matslaav/',
+      'https://www.facebook.com/matslaav',
+      'https://soundcloud.com/matslaav',
+    ],
+  }
 
   return (
     <>
+      <Seo pageKey="home" />
+      <Head>
+        <script type="application/ld+json">{JSON.stringify(personLd)}</script>
+      </Head>
       {/* Hero */}
       <section className="hero">
         <div className="hero-bg">
@@ -21,10 +44,10 @@ export default function Avaleht() {
           </h1>
           <p className="hero-text">{t.hero.text}</p>
           <div className="hero-actions">
-            <Link to="/esinemised" className="btn">
+            <Link to={to('events')} className="btn">
               {t.hero.btnEvents}
             </Link>
-            <Link to="/kontakt" className="btn btn-outline">
+            <Link to={to('contact')} className="btn btn-outline">
               {t.hero.btnContact}
             </Link>
           </div>
@@ -35,7 +58,12 @@ export default function Avaleht() {
       <section className="section">
         <div className="container bio">
           <div className="bio-photo">
-            <img src="/images/rauno.jpg" alt={t.bio.imgAlt} />
+            <img
+              src="/images/rauno.jpg"
+              alt={t.bio.imgAlt}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div className="bio-body">
             <p className="eyebrow">{t.bio.eyebrow}</p>
@@ -105,7 +133,12 @@ export default function Avaleht() {
               </div>
             </div>
             <div className="matslaav-media">
-              <img src="/images/raunokosmos.jpg" alt={t.matslaav.imgAlt} />
+              <img
+                src="/images/raunokosmos.jpg"
+                alt={t.matslaav.imgAlt}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
@@ -142,7 +175,13 @@ export default function Avaleht() {
       {/* CTA */}
       <section className="cta">
         <div className="cta-bg">
-          <img src="/images/raunolilledes.jpg" alt="" aria-hidden="true" />
+          <img
+            src="/images/raunolilledes.jpg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div className="container cta-inner">
           <img
@@ -150,6 +189,8 @@ export default function Avaleht() {
             src="/apple-touch-icon.png"
             alt=""
             aria-hidden="true"
+            loading="lazy"
+            decoding="async"
           />
           <h2 className="cta-title">
             {t.cta.pre}
@@ -157,7 +198,7 @@ export default function Avaleht() {
             {t.cta.post}
           </h2>
           <div style={{ marginTop: '2.5rem' }}>
-            <Link to="/kontakt" className="btn">
+            <Link to={to('contact')} className="btn">
               {t.cta.btn}
             </Link>
           </div>

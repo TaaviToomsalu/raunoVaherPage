@@ -1,22 +1,36 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useLang } from '../i18n.jsx'
+import { pathFor, alternatePath } from '../lib/routes-i18n.js'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const { lang, setLang, t } = useLang()
+  const { lang, t } = useLang()
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
 
   const links = [
-    { to: '/', label: t.nav.home, end: true },
-    { to: '/galerii', label: t.nav.gallery },
-    { to: '/esinemised', label: t.nav.events },
-    { to: '/kontakt', label: t.nav.contact },
+    { to: pathFor('home', lang), label: t.nav.home, end: true },
+    { to: pathFor('gallery', lang), label: t.nav.gallery },
+    { to: pathFor('events', lang), label: t.nav.events },
+    { to: pathFor('contact', lang), label: t.nav.contact },
   ]
+
+  // Keelevahetus säilitab praeguse lehe, aga viib teise keele URL-ile.
+  const switchLang = (target) => {
+    if (target !== lang) navigate(alternatePath(pathname, target))
+    setOpen(false)
+  }
 
   return (
     <nav className="navbar">
       <div className="container navbar-inner">
-        <NavLink to="/" className="navbar-brand" onClick={() => setOpen(false)}>
+        <NavLink
+          to={pathFor('home', lang)}
+          end
+          className="navbar-brand"
+          onClick={() => setOpen(false)}
+        >
           <span className="dot" aria-hidden="true" />
           Rauno Vaher
         </NavLink>
@@ -45,7 +59,7 @@ export default function Navbar() {
               type="button"
               className={lang === 'et' ? 'active' : ''}
               aria-pressed={lang === 'et'}
-              onClick={() => setLang('et')}
+              onClick={() => switchLang('et')}
             >
               ET
             </button>
@@ -56,7 +70,7 @@ export default function Navbar() {
               type="button"
               className={lang === 'en' ? 'active' : ''}
               aria-pressed={lang === 'en'}
-              onClick={() => setLang('en')}
+              onClick={() => switchLang('en')}
             >
               EN
             </button>

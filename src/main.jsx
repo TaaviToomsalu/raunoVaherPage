@@ -1,16 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import App from './App.jsx'
-import { LanguageProvider } from './i18n.jsx'
 import './styles/index.css'
+import { ViteReactSSG } from 'vite-react-ssg'
+import { routes } from './routes.jsx'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <LanguageProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </LanguageProvider>
-  </React.StrictMode>,
-)
+// Sama route-tabel toidab nii kliendi hüdreerimise kui prerenderi.
+// ViteReactSSG ehitab routeri, mount'ib kliendil ja genereerib buildis
+// igale route'ile staatilise HTML-i (õige meta + sisu crawlerile).
+export const createRoot = ViteReactSSG({ routes })

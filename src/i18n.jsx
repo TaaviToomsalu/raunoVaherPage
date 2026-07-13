@@ -1,33 +1,29 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { translations } from './translations.js'
+import { getLang, pathFor } from './lib/routes-i18n.js'
 
-const STORAGE_KEY = 'rv-lang'
 const LanguageContext = createContext(null)
 
-function getInitialLang() {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved === 'et' || saved === 'en') return saved
-  } catch {
-    /* localStorage pole saadaval — kasuta vaikekeelt */
-  }
-  return 'et'
-}
-
+// Keel tuletatakse URL-ist (mitte localStorage'ist) — nii on iga keel oma
+// stabiilse indekseeritava URL-iga ja prerender annab õige keele HTML-i.
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(getInitialLang)
+  const { pathname } = useLocation()
+  const lang = getLang(pathname)
 
   useEffect(() => {
     document.documentElement.lang = lang
-    try {
-      localStorage.setItem(STORAGE_KEY, lang)
-    } catch {
-      /* vaikne — kirjutamine võib privaatrežiimis ebaõnnestuda */
-    }
   }, [lang])
 
+  const value = {
+    lang,
+    t: translations[lang],
+    // Keele-teadlik sisemine link: to('contact') → '/kontakt' või '/en/contact'.
+    to: (key) => pathFor(key, lang),
+  }
+
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t: translations[lang] }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   )
