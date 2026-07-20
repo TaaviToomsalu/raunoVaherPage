@@ -57,7 +57,7 @@ export default function Avaleht() {
       {/* Bio */}
       <section className="section">
         <div className="container bio">
-          <div className="bio-photo">
+          <div className="bio-photo reveal">
             <img
               src="/images/rauno.jpg"
               alt={t.bio.imgAlt}
@@ -65,7 +65,7 @@ export default function Avaleht() {
               decoding="async"
             />
           </div>
-          <div className="bio-body">
+          <div className="bio-body reveal">
             <p className="eyebrow">{t.bio.eyebrow}</p>
             <h2 className="section-title">
               {t.bio.title[0]}
@@ -84,11 +84,11 @@ export default function Avaleht() {
       {/* Minu tee */}
       <section className="section path">
         <div className="container">
-          <p className="eyebrow">{t.path.eyebrow}</p>
-          <h2 className="section-title">{t.path.title}</h2>
+          <p className="eyebrow reveal">{t.path.eyebrow}</p>
+          <h2 className="section-title reveal">{t.path.title}</h2>
           <div className="path-grid">
             {t.path.cards.map((card, i) => (
-              <article className="path-card" key={card.title}>
+              <article className="path-card reveal" key={card.title}>
                 <div className="index">0{i + 1}</div>
                 <h3>{card.title}</h3>
                 <p className="path-lead">{card.lead}</p>
@@ -112,7 +112,7 @@ export default function Avaleht() {
       {/* Mats Laav */}
       <section className="section matslaav">
         <div className="container">
-          <div className="matslaav-panel">
+          <div className="matslaav-panel reveal">
             <span className="matslaav-wordmark" aria-hidden="true">
               Mats Laav
             </span>
@@ -147,11 +147,11 @@ export default function Avaleht() {
       {/* Testimonials */}
       <section className="section testimonials">
         <div className="container">
-          <p className="eyebrow">{t.testimonials.eyebrow}</p>
-          <h2 className="section-title">{t.testimonials.title}</h2>
+          <p className="eyebrow reveal">{t.testimonials.eyebrow}</p>
+          <h2 className="section-title reveal">{t.testimonials.title}</h2>
           <div className="testimonials-grid">
             {t.testimonials.quotes.map((quote, i) => (
-              <figure className="testimonial" key={i}>
+              <figure className="testimonial reveal" key={i}>
                 <blockquote>{quote}</blockquote>
               </figure>
             ))}
@@ -162,8 +162,8 @@ export default function Avaleht() {
       {/* Video */}
       <section className="section">
         <div className="container">
-          <p className="eyebrow">{t.video.eyebrow}</p>
-          <h2 className="rule-heading">{t.video.title}</h2>
+          <p className="eyebrow reveal">{t.video.eyebrow}</p>
+          <h2 className="rule-heading reveal">{t.video.title}</h2>
           <VideoEmbed
             src="/esitlusvideo.mp4"
             poster="/esitlusvideo-poster.jpg"
@@ -183,7 +183,7 @@ export default function Avaleht() {
             decoding="async"
           />
         </div>
-        <div className="container cta-inner">
+        <div className="container cta-inner reveal">
           <img
             className="cta-avatar"
             src="/apple-touch-icon.png"

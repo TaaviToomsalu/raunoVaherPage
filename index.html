@@ -9,6 +9,11 @@
     <!-- Per-lehe SEO (title, description, canonical, hreflang, OG, Twitter)
          tuleb komponendist src/components/Seo.jsx ja kirjutatakse prerender-ajal
          igasse lehte. Siin all on ainult vaikepealkiri fallback'iks. -->
+    <script>
+      // Lubab reveal/entrance animatsioonidele CSS-is "js-reveal" gated oleku.
+      // Ilma JS-ta (crawler/no-js) jääb kogu sisu nähtavaks.
+      document.documentElement.classList.add('js-reveal')
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
