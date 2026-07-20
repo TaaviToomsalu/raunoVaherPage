@@ -326,9 +326,9 @@ img {
   inset: 0;
   background: linear-gradient(
     to top,
-    var(--bg) 0%,
-    rgba(26, 26, 26, 0.7) 45%,
-    rgba(26, 26, 26, 0.3) 100%
+    rgba(26, 26, 26, 0.62) 0%,
+    rgba(26, 26, 26, 0.36) 45%,
+    rgba(26, 26, 26, 0.08) 100%
   );
 }
 
@@ -354,7 +354,7 @@ img {
 }
 
 .hero-text {
-  color: var(--muted);
+  color: #d0d0d0;
   font-size: 1.2rem;
   max-width: 36rem;
   margin-top: 2rem;
@@ -437,7 +437,9 @@ img {
 
 /* Minu tee — pakkumiste kaardid */
 .path {
-  background: var(--card);
+  background:
+    linear-gradient(rgba(20, 20, 20, 0.68), rgba(20, 20, 20, 0.68)),
+    url('/images/metsikrauno.jpg') center / cover fixed;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -453,7 +455,7 @@ img {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--bg);
+  background: rgba(20, 20, 20, 0.88);
   border: 1px solid var(--border);
   padding: 2.25rem;
   transition: border-color 0.25s ease;
@@ -603,6 +605,12 @@ img {
 }
 
 /* Inimeste sõnad — tsitaadikaardid */
+.testimonials {
+  background:
+    linear-gradient(rgba(20, 20, 20, 0.6), rgba(20, 20, 20, 0.6)),
+    url('/images/metsikrauno.jpg') center / cover fixed;
+}
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -612,7 +620,7 @@ img {
 
 .testimonial {
   position: relative;
-  background: var(--surface);
+  background: rgba(35, 35, 35, 0.9);
   border: 1px solid var(--border);
   padding: 2.5rem 2rem 2.25rem;
   overflow: hidden;
@@ -680,7 +688,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.28;
+  opacity: 0.6;
 }
 
 .cta-bg::after {
@@ -689,9 +697,9 @@ img {
   inset: 0;
   background: linear-gradient(
     to right,
-    var(--bg) 0%,
-    rgba(26, 26, 26, 0.6) 50%,
-    var(--bg) 100%
+    rgba(26, 26, 26, 0.58) 0%,
+    rgba(26, 26, 26, 0.2) 50%,
+    rgba(26, 26, 26, 0.58) 100%
   );
 }
 
