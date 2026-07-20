@@ -77,15 +77,15 @@ export default function Galerii() {
       <Seo pageKey="gallery" />
       <div className="container">
         <div className="page-head">
-          <p className="eyebrow">{t.gallery.eyebrow}</p>
-          <h1 className="page-title">{t.gallery.title}</h1>
-          <p className="section-subtitle">{t.gallery.subtitle}</p>
+          <p className="eyebrow reveal">{t.gallery.eyebrow}</p>
+          <h1 className="page-title reveal">{t.gallery.title}</h1>
+          <p className="section-subtitle reveal">{t.gallery.subtitle}</p>
         </div>
 
         <div className="gallery-grid" ref={gridRef}>
           {items.map((item, i) => (
             <div
-              className={item.size === 'half' ? 'gallery-item g-half' : 'gallery-item'}
+              className={item.size === 'half' ? 'gallery-item g-half reveal' : 'gallery-item reveal'}
               key={item.src}
             >
               {item.type === 'video' ? (
