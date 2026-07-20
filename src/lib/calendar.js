@@ -1,8 +1,16 @@
 // Google Calendar ICS feed -> esinemiste nimekiri.
 // Brauseris pärib sama-origini teed (/kalender.ics), mille proxib
 // dev'is Vite ja produktsioonis nginx (CORS'i vältimiseks).
+// Serveris (SSG prerender / Node) proxit pole — seal kasutame otse
+// Google'i avalikku URL-i (Node fetch'il pole CORS piiranguid).
 
 const CAL_PATH = '/kalender.ics'
+const CAL_URL =
+  'https://calendar.google.com/calendar/ical/d9cce29fd9a35d1e85009d71566d5539aa94bb969f6f252f8057cfd64f2635a7%40group.calendar.google.com/public/basic.ics'
+
+function calendarUrl() {
+  return typeof window === 'undefined' ? CAL_URL : CAL_PATH
+}
 
 function unescapeText(s) {
   return s
@@ -62,7 +70,7 @@ function fmtDate(d) {
 
 // Tagastab { upcoming, past } — kujul mida GigList ootab (date / venue / city).
 export async function fetchGigs() {
-  const res = await fetch(CAL_PATH, { headers: { Accept: 'text/calendar' } })
+  const res = await fetch(calendarUrl(), { headers: { Accept: 'text/calendar' } })
   if (!res.ok) throw new Error(`Kalendri päring ebaõnnestus: ${res.status}`)
   const text = await res.text()
   const events = parseICS(text)

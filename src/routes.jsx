@@ -1,7 +1,7 @@
 import App from './App.jsx'
 import Avaleht from './pages/Avaleht.jsx'
 import Galerii from './pages/Galerii.jsx'
-import Esinemised from './pages/Esinemised.jsx'
+import Esinemised, { loader as gigsLoader } from './pages/Esinemised.jsx'
 import Kontakt from './pages/Kontakt.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -15,11 +15,11 @@ export const routes = [
     children: [
       { index: true, element: <Avaleht /> },
       { path: 'galerii', element: <Galerii /> },
-      { path: 'esinemised', element: <Esinemised /> },
+      { path: 'esinemised', element: <Esinemised />, loader: gigsLoader },
       { path: 'kontakt', element: <Kontakt /> },
       { path: 'en', element: <Avaleht /> },
       { path: 'en/gallery', element: <Galerii /> },
-      { path: 'en/events', element: <Esinemised /> },
+      { path: 'en/events', element: <Esinemised />, loader: gigsLoader },
       { path: 'en/contact', element: <Kontakt /> },
       { path: '*', element: <NotFound /> },
     ],

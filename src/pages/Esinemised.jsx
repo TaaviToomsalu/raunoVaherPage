@@ -1,8 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import { useLang } from '../i18n.jsx'
 import { fetchGigs } from '../lib/calendar.js'
+
+export async function loader() {
+  try {
+    return await fetchGigs()
+  } catch (err) {
+    console.error('Kalendri laadimine ebaõnnestus, kasutan varuandmeid', err)
+    return { upcoming: [], past: [] }
+  }
+}
 
 function GigList({ gigs }) {
   return (
@@ -23,21 +32,23 @@ function GigList({ gigs }) {
 
 export default function Esinemised() {
   const { t, to } = useLang()
-  // Algväärtus tühi — kalender täidab nimekirja, kuni selleni näitame "tulekul".
-  const [gigs, setGigs] = useState({ upcoming: [], past: [] })
+  const initial = useLoaderData() ?? { upcoming: [], past: [] }
+  const [gigs, setGigs] = useState(initial)
 
+  // Pärast hüdreerimist vaata värskemat kalendrit; uuenda ainult siis,
+  // kui andmed on muutunud (nt Rauno lisas uue esinemise pärast buildi).
   useEffect(() => {
     let active = true
     fetchGigs()
-      .then((data) => {
-        if (active) setGigs(data)
+      .then((fresh) => {
+        if (!active) return
+        if (JSON.stringify(fresh) !== JSON.stringify(gigs)) setGigs(fresh)
       })
-      .catch((err) => {
-        console.error('Kalendri laadimine ebaõnnestus, kasutan varuandmeid', err)
-      })
+      .catch((err) => console.error('Kalendri värskendamine ebaõnnestus', err))
     return () => {
       active = false
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
