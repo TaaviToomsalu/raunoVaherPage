@@ -27,45 +27,34 @@ export default function Kontakt() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-async function handleSubmit(e) {
-  e.preventDefault();
-  setStatus("sending");
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('sending')
 
-  const payload = {
-    nimi: form.nimi,
-    email: form.email,
-    message: form.sonum
-  };
+    const payload = {
+      nimi: form.nimi,
+      email: form.email,
+      message: form.sonum,
+    }
 
-  console.log("FORM STATE:", form);
-  console.log("SENDING PAYLOAD:", payload);
+    try {
+      const res = await fetch('https://formspree.io/f/mkoabpgw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
 
-  try {
-    const res = await fetch("https://formspree.io/f/mkoabpgw", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
+      if (!res.ok) throw new Error('Formspree error')
 
-    console.log("RESPONSE STATUS:", res.status);
-    console.log("RESPONSE OK:", res.ok);
-
-    const data = await res.text();
-    console.log("FORMSPREE RESPONSE:", data);
-
-    if (!res.ok) throw new Error("Formspree error");
-
-    setStatus("sent");
-    setForm({ nimi: "", email: "", sonum: "" });
-
-  } catch (err) {
-    console.log("ERROR:", err);
-    setStatus("error");
+      setStatus('sent')
+      setForm({ nimi: '', email: '', sonum: '' })
+    } catch {
+      setStatus('error')
+    }
   }
-}
 
   return (
     <section className="section">
@@ -153,9 +142,15 @@ async function handleSubmit(e) {
             {status === 'sending' ? t.contact.form.sending : t.contact.form.submit}
           </button>
 
-          {status === 'sent' && <p className="form-note">{t.contact.form.sent}</p>}
+          {status === 'sent' && (
+            <p className="form-note" role="status" aria-live="polite">
+              {t.contact.form.sent}
+            </p>
+          )}
           {status === 'error' && (
-            <p className="form-note">{t.contact.form.error}</p>
+            <p className="form-note" role="alert">
+              {t.contact.form.error}
+            </p>
           )}
         </form>
       </div>
