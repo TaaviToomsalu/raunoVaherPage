@@ -749,7 +749,7 @@ img {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  background: var(--card);
+  background: transparent;
   grid-column: span 2; /* vaikimisi ~1/3 laius */
 }
 
