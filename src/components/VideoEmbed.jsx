@@ -6,7 +6,7 @@ export default function VideoEmbed({
   title = 'Esitlusvideo',
 }) {
   return (
-    <div className="video-wrapper">
+    <div className="video-wrapper reveal">
       <video
         src={src}
         poster={poster}

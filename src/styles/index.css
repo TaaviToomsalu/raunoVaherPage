@@ -666,6 +666,11 @@ img {
   background: #000;
 }
 
+.js-reveal .video-wrapper.reveal {
+  transform: translateY(60px);
+  transition-duration: 1s;
+}
+
 .video-wrapper iframe,
 .video-wrapper video {
   position: absolute;
