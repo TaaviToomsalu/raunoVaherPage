@@ -103,6 +103,12 @@ export default function Avaleht() {
                   </div>
                 ))}
                 {card.foot && <p className="path-foot">{card.foot}</p>}
+                <Link
+                  to={`${to('contact')}?service=${encodeURIComponent(card.bookingService)}`}
+                  className="path-booking-link"
+                >
+                  {t.path.bookingBtn}
+                </Link>
               </article>
             ))}
           </div>

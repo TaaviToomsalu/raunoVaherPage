@@ -521,6 +521,21 @@ img {
   font-style: italic;
 }
 
+.path-booking-link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 1.75rem;
+  color: var(--primary-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.path-booking-link:hover {
+  color: var(--text);
+}
+
 /* Mats Laav — muusikaprojekti plokk */
 .matslaav {
   position: relative;
@@ -886,6 +901,26 @@ img {
   gap: 1.5rem;
 }
 
+.booking-process {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border-left: 2px solid var(--primary);
+  background: var(--surface);
+}
+
+.booking-process h2 {
+  font-size: 1.35rem;
+}
+
+.booking-process ol {
+  margin: 1rem 0 0 1.2rem;
+  color: var(--muted);
+}
+
+.booking-process li + li {
+  margin-top: 0.65rem;
+}
+
 .contact-channel .label {
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -933,7 +968,8 @@ a.contact-channel:hover .value {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   background: transparent;
   border: none;
   border-bottom: 1px solid var(--border-strong);
@@ -947,8 +983,24 @@ a.contact-channel:hover .value {
   resize: vertical;
 }
 
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: var(--card);
+  color: var(--text);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
 .form-group input:focus-visible,
-.form-group textarea:focus-visible {
+.form-group textarea:focus-visible,
+.form-group select:focus-visible {
   outline: none;
   border-bottom-color: var(--primary);
 }
@@ -1039,6 +1091,10 @@ a.contact-channel:hover .value {
 
   .path-grid,
   .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
     grid-template-columns: 1fr;
   }
 

@@ -66,6 +66,7 @@ export const translations = {
       cards: [
         {
           title: 'Kontserdid ja esinemised',
+          bookingService: 'performance',
           lead: 'Kollektiivid: Mats Laav, Kangelased, Araukaaria, Wäelaulud, Kristin Kalnapenk Bänd.',
           groups: [
             {
@@ -80,6 +81,7 @@ export const translations = {
         },
         {
           title: 'Saunarituaalid',
+          bookingService: 'sauna',
           lead: 'Leili, laulu ja kohalolu vägi.',
           groups: [
             {
@@ -91,6 +93,7 @@ export const translations = {
         },
         {
           title: 'Trummiõpetus',
+          bookingService: 'lesson',
           lead: 'Õpi rütme seestpoolt väljapoole.',
           groups: [
             {
@@ -102,6 +105,7 @@ export const translations = {
         },
         {
           title: 'Isiklikud kohtumised',
+          bookingService: 'one-to-one',
           lead: 'Üks-ühele teekond läbi rütmi, hääle ja kohalolu.',
           groups: [
             {
@@ -112,6 +116,7 @@ export const translations = {
           foot: 'Iga kohtumine on ainulaadne.',
         },
       ],
+      bookingBtn: 'Küsi pakkumist',
     },
 
     matslaav: {
@@ -199,9 +204,31 @@ export const translations = {
       locationLabel: 'Asukoht',
       locationValue: 'Eesti',
       soonTitle: 'Peagi saadaval',
+      process: {
+        title: 'Kuidas broneerimine käib',
+        steps: [
+          'Kirjelda oma soovi ja vali sobiv teenus.',
+          'Lisa võimalusel kuupäev, toimumiskoht ja osalejate arv.',
+          'Rauno võtab sinuga ühendust, et detailid kokku leppida.',
+        ],
+      },
       form: {
         name: 'Nimi',
         email: 'E-post',
+        service: 'Soovitud teenus',
+        servicePh: 'Vali teenus',
+        services: [
+          { value: 'performance', label: 'Kontsert või esinemine' },
+          { value: 'sauna', label: 'Saunarituaal' },
+          { value: 'lesson', label: 'Trummiõpetus' },
+          { value: 'one-to-one', label: 'Isiklik kohtumine' },
+          { value: 'other', label: 'Muu päring' },
+        ],
+        date: 'Soovitud kuupäev',
+        attendees: 'Osalejate arv',
+        attendeesPh: 'Näiteks 20',
+        location: 'Toimumiskoht',
+        locationPh: 'Linn või täpsem asukoht',
         message: 'Sõnum',
         namePh: 'Sinu nimi',
         emailPh: 'sinu@email.ee',
@@ -289,6 +316,7 @@ export const translations = {
       cards: [
         {
           title: 'Concerts & Performances',
+          bookingService: 'performance',
           lead: 'Collectives: Mats Laav, Kangelased, Araukaaria, Wäelaulud, Kristin Kalnapenk Bänd.',
           groups: [
             {
@@ -303,6 +331,7 @@ export const translations = {
         },
         {
           title: 'Sauna Rituals',
+          bookingService: 'sauna',
           lead: 'Traditional and contemporary sauna experiences.',
           groups: [
             {
@@ -314,6 +343,7 @@ export const translations = {
         },
         {
           title: 'Drum Lessons',
+          bookingService: 'lesson',
           lead: 'Learn rhythm from the inside out.',
           groups: [
             {
@@ -325,6 +355,7 @@ export const translations = {
         },
         {
           title: 'One-to-One Sessions',
+          bookingService: 'one-to-one',
           lead: 'Personal guidance through rhythm, voice, presence, and conversation.',
           groups: [
             {
@@ -335,6 +366,7 @@ export const translations = {
           foot: 'Each session is tailored to your needs.',
         },
       ],
+      bookingBtn: 'Request a quote',
     },
 
     matslaav: {
@@ -422,9 +454,31 @@ export const translations = {
       locationLabel: 'Location',
       locationValue: 'Estonia',
       soonTitle: 'Coming soon',
+      process: {
+        title: 'How booking works',
+        steps: [
+          'Describe what you are looking for and choose a service.',
+          'If possible, add the date, location, and number of participants.',
+          'Rauno will get in touch to agree on the details.',
+        ],
+      },
       form: {
         name: 'Name',
         email: 'Email',
+        service: 'Service requested',
+        servicePh: 'Choose a service',
+        services: [
+          { value: 'performance', label: 'Concert or performance' },
+          { value: 'sauna', label: 'Sauna ritual' },
+          { value: 'lesson', label: 'Drum lesson' },
+          { value: 'one-to-one', label: 'One-to-one session' },
+          { value: 'other', label: 'Other inquiry' },
+        ],
+        date: 'Preferred date',
+        attendees: 'Number of participants',
+        attendeesPh: 'For example, 20',
+        location: 'Location',
+        locationPh: 'City or venue',
         message: 'Message',
         namePh: 'Your name',
         emailPh: 'you@email.com',

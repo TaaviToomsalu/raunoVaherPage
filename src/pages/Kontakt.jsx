@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import { useLang } from '../i18n.jsx'
 
@@ -19,7 +20,17 @@ function encode(data) {
 
 export default function Kontakt() {
   const { t } = useLang()
-  const [form, setForm] = useState({ nimi: '', email: '', sonum: '' })
+  const [searchParams] = useSearchParams()
+  const initialService = searchParams.get('service') ?? ''
+  const [form, setForm] = useState({
+    nimi: '',
+    email: '',
+    teenus: initialService,
+    kuupaev: '',
+    asukoht: '',
+    osalejad: '',
+    sonum: '',
+  })
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
 
   function handleChange(e) {
@@ -34,6 +45,10 @@ export default function Kontakt() {
     const payload = {
       nimi: form.nimi,
       email: form.email,
+      teenus: form.teenus,
+      kuupaev: form.kuupaev,
+      asukoht: form.asukoht,
+      osalejad: form.osalejad,
       message: form.sonum,
     }
 
@@ -50,7 +65,15 @@ export default function Kontakt() {
       if (!res.ok) throw new Error('Formspree error')
 
       setStatus('sent')
-      setForm({ nimi: '', email: '', sonum: '' })
+      setForm({
+        nimi: '',
+        email: '',
+        teenus: '',
+        kuupaev: '',
+        asukoht: '',
+        osalejad: '',
+        sonum: '',
+      })
     } catch {
       setStatus('error')
     }
@@ -64,6 +87,15 @@ export default function Kontakt() {
           <p className="eyebrow">{t.contact.eyebrow}</p>
           <h1 className="page-title">{t.contact.title}</h1>
           <p className="section-subtitle">{t.contact.subtitle}</p>
+
+          <div className="booking-process">
+            <h2>{t.contact.process.title}</h2>
+            <ol>
+              {t.contact.process.steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </div>
 
           <div className="contact-channels">
             <a
@@ -109,6 +141,57 @@ export default function Kontakt() {
               onChange={handleChange}
               required
               placeholder={t.contact.form.namePh}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="teenus">{t.contact.form.service}</label>
+            <select id="teenus" name="teenus" value={form.teenus} onChange={handleChange}>
+              <option value="">{t.contact.form.servicePh}</option>
+              {t.contact.form.services.map((service) => (
+                <option key={service.value} value={service.value}>
+                  {service.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="kuupaev">{t.contact.form.date}</label>
+              <input
+                id="kuupaev"
+                name="kuupaev"
+                type="date"
+                value={form.kuupaev}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="osalejad">{t.contact.form.attendees}</label>
+              <input
+                id="osalejad"
+                name="osalejad"
+                type="number"
+                min="1"
+                inputMode="numeric"
+                value={form.osalejad}
+                onChange={handleChange}
+                placeholder={t.contact.form.attendeesPh}
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="asukoht">{t.contact.form.location}</label>
+            <input
+              id="asukoht"
+              name="asukoht"
+              type="text"
+              value={form.asukoht}
+              onChange={handleChange}
+              placeholder={t.contact.form.locationPh}
             />
           </div>
 
