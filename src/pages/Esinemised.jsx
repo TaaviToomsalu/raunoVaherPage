@@ -82,7 +82,7 @@ export default function Esinemised() {
         )}
 
         <div style={{ marginTop: '3rem' }}>
-          <Link to={`${to('contact')}?service=performance`} className="btn">
+          <Link to={`${to('contact')}?service=performance#vorm`} className="btn">
             {t.events.btn}
           </Link>
         </div>

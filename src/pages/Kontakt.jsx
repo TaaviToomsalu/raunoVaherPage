@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import { useLang } from '../i18n.jsx'
 
@@ -21,7 +21,17 @@ function encode(data) {
 export default function Kontakt() {
   const { t } = useLang()
   const [searchParams] = useSearchParams()
+  const { hash } = useLocation()
   const initialService = searchParams.get('service') ?? ''
+  const formRef = useRef(null)
+
+  // Kui saabuti #vorm ankruga (nt "Küsi pakkumist" või "Võta ühendust"),
+  // kerige vorm pärast hüdreerimist vaatevälja — mobiilil on see info all.
+  useEffect(() => {
+    if (hash === '#vorm' && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [hash])
   const [form, setForm] = useState({
     nimi: '',
     email: '',
@@ -129,7 +139,7 @@ export default function Kontakt() {
           />
         </div>
 
-        <form className="form" onSubmit={handleSubmit}>
+        <form ref={formRef} id="vorm" className="form" onSubmit={handleSubmit}>
 
           <div className="form-group">
             <label htmlFor="nimi">{t.contact.form.name}</label>

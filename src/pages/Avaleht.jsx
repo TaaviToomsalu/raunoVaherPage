@@ -47,7 +47,7 @@ export default function Avaleht() {
             <Link to={to('events')} className="btn">
               {t.hero.btnEvents}
             </Link>
-            <Link to={to('contact')} className="btn btn-outline">
+            <Link to={`${to('contact')}#vorm`} className="btn btn-outline">
               {t.hero.btnContact}
             </Link>
           </div>
@@ -104,7 +104,7 @@ export default function Avaleht() {
                 ))}
                 {card.foot && <p className="path-foot">{card.foot}</p>}
                 <Link
-                  to={`${to('contact')}?service=${encodeURIComponent(card.bookingService)}`}
+                  to={`${to('contact')}?service=${encodeURIComponent(card.bookingService)}#vorm`}
                   className="path-booking-link"
                 >
                   {t.path.bookingBtn}
@@ -204,7 +204,7 @@ export default function Avaleht() {
             {t.cta.post}
           </h2>
           <div style={{ marginTop: '2.5rem' }}>
-            <Link to={to('contact')} className="btn">
+            <Link to={`${to('contact')}#vorm`} className="btn">
               {t.cta.btn}
             </Link>
           </div>
