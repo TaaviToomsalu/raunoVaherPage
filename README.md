@@ -162,3 +162,23 @@ scrolled into view (the `#vorm` anchor).
 
 The contact form is sent via Formspree to email; a reply is promised within
 1–2 days. Form fields are available in both Estonian and English.
+
+## Muudatuste logi
+
+### 2026-08-03 — taustapiltide ja üleminekute uuendus
+
+- **Hero, Minu tee ja Inimeste sõnade** taustapildid asendatud
+  `background-attachment: fixed` reeglist eraldi `position: fixed` pildikihiga,
+  mida sektsioon lõikab `clip-path` / `mask-image` abil. Lahendab mobiilibrauseri
+  URL-bari zoomimise probleemi (.Redmi / Android Chrome).
+- **Hero** gradient-ülelävi (_hero-overlay_) eraldatud oma kihina, et pilt
+  jääks fikseerituna extingu rulluiva efektiita.
+- **Mats Laav** sektsiooni teravad `border-top` / `border-bottom` jooned
+  eemaldatud; asendatud `mask-image` fadega, mis hägustab sujuvalt over
+  "MATS LAAV" wordmarki.
+- Kõigile pilditaustaga sektsioonidele lisatud `mask-image` gradient-fade
+  (üleval ja all 6rem), et sektsioonide vahelised üleminekud oleksid sujuvad,
+  mitte teravad jooned.
+- Desktopil (`min-width: 721px`) **Minu tee** ja **Inimeste sõnade** taust
+  kasutab endiselt native `background-attachment: fixed` (stabiilne ja
+  kvaliteetsem); mobiilis `position: fixed` + `mask-image` kiht.

@@ -36,6 +36,7 @@ export default function Avaleht() {
           <img src="/images/metsikrauno.jpg" alt={t.hero.imgAlt} />
           <div className="grain" aria-hidden="true" />
         </div>
+        <div className="hero-overlay" aria-hidden="true" />
         <div className="container hero-inner">
           <p className="eyebrow">{t.hero.eyebrow}</p>
           <h1 className="hero-title">
@@ -83,6 +84,9 @@ export default function Avaleht() {
 
       {/* Minu tee */}
       <section className="section path">
+        <div className="section-bg path-bg" aria-hidden="true">
+          <img src="/images/metsikrauno.jpg" alt="" />
+        </div>
         <div className="container">
           <p className="eyebrow reveal">{t.path.eyebrow}</p>
           <h2 className="section-title reveal">{t.path.title}</h2>
@@ -152,6 +156,9 @@ export default function Avaleht() {
 
       {/* Testimonials */}
       <section className="section testimonials">
+        <div className="section-bg testimonials-bg" aria-hidden="true">
+          <img src="/images/metsikrauno.jpg" alt="" />
+        </div>
         <div className="container">
           <p className="eyebrow reveal">{t.testimonials.eyebrow}</p>
           <h2 className="section-title reveal">{t.testimonials.title}</h2>
