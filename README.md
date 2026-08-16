@@ -98,6 +98,12 @@ The site listens on port 80. [`Dockerfile`](Dockerfile) and [`compose.yaml`](com
 hold the configuration. [`nginx.conf`](nginx.conf) routes unknown paths to
 `/index.html` (SPA fallback) for both the Estonian and English folders.
 
+When HTTPS is terminated by a reverse proxy in front of the container,
+`nginx.conf` uses `absolute_redirect off`. This keeps redirects for
+folder-style SSG pages (for example `/galerii` to `/galerii/`) relative, so
+the browser retains the original HTTPS protocol instead of following an
+internal HTTP redirect.
+
 ### To a server
 
 If Docker is not used, build locally and copy the contents of `dist/` into the
