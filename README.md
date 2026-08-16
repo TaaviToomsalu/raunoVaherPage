@@ -182,3 +182,35 @@ The contact form is sent via Formspree to email; a reply is promised within
 - Desktopil (`min-width: 721px`) **Minu tee** ja **Inimeste sõnade** taust
   kasutab endiselt native `background-attachment: fixed` (stabiilne ja
   kvaliteetsem); mobiilis `position: fixed` + `mask-image` kiht.
+
+## Handoff
+
+### 2026-08-16 — events refresh + past-list cap
+
+- **Weekly rebuild workflow** ([`.github/workflows/refresh.yml`](.github/workflows/refresh.yml)):
+  scheduled cron (Monday 01:00 UTC ≈ 04:00 EEST) plus a `workflow_dispatch`
+  manual trigger. It SSHes into the server and runs the same
+  `git pull && docker-compose up -d --build` as `deploy.yml`. Purpose is to
+  keep the SSG-baked events snapshot (HTML + `static-loader-data`) fresh
+  so the SEO payload doesn't go stale and there's no "old list → new"
+  flash on hydration — the client-side `/kalender.ics` fetch already
+  keeps the displayed list live between builds.
+- **Past events capped at 10** ([`src/lib/calendar.js`](src/lib/calendar.js),
+  `.slice(0, 10)` after the sort in `fetchGigs()`): the Events page now
+  shows only the 10 most recent past events, since the past list was
+  getting long.
+
+### TODO — needs from Rauno
+
+1. **More reliable info to the feedback/contact flow** — current
+   testimonial quotes are anonymous placeholders (see
+   `rauno-kysimused.txt`); real, attributable feedback is needed so they
+   can replace the placeholders in `t.testimonials.quotes`
+   ([`src/translations.js`](src/translations.js)).
+2. **Move the Google Calendar to Rauno's own account** — the events ICS
+   feed is currently hosted under the maintainer's Google account
+   (`CAL_URL` in [`src/lib/calendar.js`](src/lib/calendar.js) and
+   `ICAL_URL`/dev proxy in [`vite.config.js`](vite.config.js)). Once
+   Rauno shares the public `.ics` URL from his own calendar, update both
+   places (and the matching `location` in [`nginx.conf`](nginx.conf) if
+   the proxy path changes). No code restructuring needed.
