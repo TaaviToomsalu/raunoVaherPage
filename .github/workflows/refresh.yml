@@ -1,0 +1,37 @@
+name: Refresh events (prerender rebuild)
+
+# Weekly rebuild so the SSG-baked events snapshot (HTML +
+# static-loader-data) doesn't go stale. The client-side fetch of
+# /kalender.ics keeps the displayed list live between builds; this
+# cron just refreshes the SEO / instant-paint payload and avoids the
+# "old list -> new" flash after hydration. Can also be triggered
+# manually via workflow_dispatch.
+
+on:
+  schedule:
+    # Monday 01:00 UTC = Monday ~04:00 EEST (~03:00 winter)
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      - name: Add server host
+        run: |
+          ssh-keyscan -H 45.32.152.152 >> ~/.ssh/known_hosts
+
+      - name: Rebuild & restart
+        run: |
+          ssh -i ~/.ssh/id_ed25519 taavi@45.32.152.152 '
+            cd /var/www/raunoVaherPage &&
+            git pull &&
+            docker-compose up -d --build
+          '

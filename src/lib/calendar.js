@@ -93,6 +93,7 @@ export async function fetchGigs() {
   const past = events
     .filter((e) => e.start < startOfToday)
     .sort((a, b) => b.start - a.start)
+    .slice(0, 10)
     .map(toGig)
 
   return { upcoming, past }
