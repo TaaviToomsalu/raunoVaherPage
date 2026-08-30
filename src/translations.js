@@ -23,6 +23,11 @@ export const translations = {
         description:
           'Rauno Vaheri tulevased ja varasemad esinemised. Soovid Rauno enda üritusele? Võta ühendust.',
       },
+      shop: {
+        title: 'Pood — Rauno Vaher',
+        description:
+          'Rauno Vaheri pood — värsked kapsad otse kasvatajalt. Turvaline makse ja saatmine vormistatakse ostukorvis.',
+      },
       contact: {
         title: 'Kontakt — Rauno Vaher',
         description:
@@ -34,7 +39,9 @@ export const translations = {
       home: 'Avaleht',
       gallery: 'Galerii',
       events: 'Esinemised',
+      shop: 'Pood',
       contact: 'Kontakt',
+      cart: 'Ostukorv',
       openMenu: 'Ava menüü',
       closeMenu: 'Sulge menüü',
       langLabel: 'Keelevalik',
@@ -195,6 +202,21 @@ export const translations = {
       ],
     },
 
+    shop: {
+      eyebrow: 'Pood',
+      title: 'Pood',
+      subtitle: 'Värsked kapsad otse kasvatajalt. Makse ja saatmine vormistatakse turvaliselt ostukorvis.',
+      product: {
+        name: 'Kapsas',
+        price: '20 €',
+        unit: 'tk',
+        description: 'Värske kapsas otse kasvatajalt.',
+        imgAlt: 'Värske kapsas',
+      },
+      addToCart: 'Lisa ostukorvi',
+      note: 'Makse toimub turvaliselt Snipcarti maksevahendusel.',
+    },
+
     contact: {
       eyebrow: 'Ühendus',
       title: 'Kontakt',
@@ -273,6 +295,11 @@ export const translations = {
         description:
           'Rauno Vaher’s upcoming and past performances. Want Rauno at your event? Get in touch.',
       },
+      shop: {
+        title: 'Store — Rauno Vaher',
+        description:
+          'Rauno Vaher’s store — fresh cabbages straight from the grower. Secure payment and shipping are handled in the cart.',
+      },
       contact: {
         title: 'Contact — Rauno Vaher',
         description:
@@ -284,7 +311,9 @@ export const translations = {
       home: 'Home',
       gallery: 'Gallery',
       events: 'Events',
+      shop: 'Store',
       contact: 'Contact',
+      cart: 'Cart',
       openMenu: 'Open menu',
       closeMenu: 'Close menu',
       langLabel: 'Language',
@@ -443,6 +472,21 @@ export const translations = {
         { date: '28.02.2026', venue: 'Studio Recording', city: 'Tallinn', band: 'Odd Hugo' },
         { date: '15.12.2025', venue: 'Christmas Concert', city: 'Viljandi, Traditional Music Centre', band: 'Emerald' },
       ],
+    },
+
+    shop: {
+      eyebrow: 'Store',
+      title: 'Store',
+      subtitle: 'Fresh cabbages straight from the grower. Payment and shipping are handled securely in the cart.',
+      product: {
+        name: 'Cabbage',
+        price: '€20',
+        unit: 'piece',
+        description: 'Fresh cabbage straight from the grower.',
+        imgAlt: 'A fresh cabbage',
+      },
+      addToCart: 'Add to cart',
+      note: 'Payments are processed securely via Snipcart.',
     },
 
     contact: {

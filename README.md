@@ -49,6 +49,26 @@ During build:
 - **Contact** — a Formspree form with fields for service, date, location,
   number of attendees and message. The booking process is shown as a short
   guide. CTA links (`#vorm`) scroll the form into view on mobile.
+- **Store** (`/pood`, `/en/store`) — a Snipcart store. Products are defined
+  as HTML buy buttons ([`src/pages/Pood.jsx`](src/pages/Pood.jsx)); the cart
+  itself (checkout, payments, shipping) lives in Snipcart. See below.
+
+## Store (Snipcart)
+
+- The Snipcart loader (public API key, EUR currency, deferred
+  `on-user-interaction` loading) lives in `index.html`. The **test vs live**
+  public key is switched there — keys come from the Snipcart dashboard
+  (Account → API keys).
+- Product definition: `src/pages/Pood.jsx` — `data-item-*` attributes.
+  When changing the price, update **both** `PRODUCT_PRICE` in `Pood.jsx`
+  and the displayed `shop.product.price` in `src/translations.js`
+  (ET and EN). Same `data-item-id` must always keep the same price.
+- `data-item-url` points to the live store page — Snipcart's crawler
+  re-reads it at checkout to validate the order, so live orders only work
+  once the page is deployed at `raunovaher.com/pood`.
+- Dashboard checklist status: domain `raunovaher.com` configured; business
+  info, Stripe gateway connection and shipping rules still to be done
+  before going live.
 
 ## Languages and i18n
 
