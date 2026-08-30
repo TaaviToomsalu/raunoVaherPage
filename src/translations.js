@@ -215,6 +215,8 @@ export const translations = {
       },
       addToCart: 'Lisa ostukorvi',
       note: 'Makse toimub turvaliselt Snipcarti maksevahendusel.',
+      disabledTitle: 'Pood on hetkel ehitamisel',
+      disabledText: 'Tulge varsti tagasi — peatselt saab siit osta värskeid kapsaid.',
     },
 
     contact: {
@@ -487,6 +489,8 @@ export const translations = {
       },
       addToCart: 'Add to cart',
       note: 'Payments are processed securely via Snipcart.',
+      disabledTitle: 'The store is currently being built',
+      disabledText: 'Check back soon — fresh cabbages will be available here shortly.',
     },
 
     contact: {

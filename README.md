@@ -66,9 +66,20 @@ During build:
 - `data-item-url` points to the live store page — Snipcart's crawler
   re-reads it at checkout to validate the order, so live orders only work
   once the page is deployed at `raunovaher.com/pood`.
-- Dashboard checklist status: domain `raunovaher.com` configured; business
-  info, Stripe gateway connection and shipping rules still to be done
-  before going live.
+- Dashboard checklist status: domain `raunovaher.com` configured, business
+  info filled, currency EUR (with `20 €`-style formats, Europe/Tallinn
+  timezone); shipping will be **pickup only** (flat €0 "Pickup" rule still to
+  be added). No VAT (Rauno is not VAT-registered). Payment method pending —
+  either Rauno's own Stripe account or Snipcart's deferred payments
+  ("Only allow deferred payments", pay at pickup).
+- **Currently not selling:** the store page shows a "being built" notice —
+  flip `SHOP_ENABLED = false` → `true` in
+  [`src/pages/Pood.jsx`](src/pages/Pood.jsx) and deploy when launching.
+- Cart UX: side-modal cart, Estonian cart locale (theme pinned to a version
+  shipping `et.json`), "back to site" buttons on checkout and on the
+  order-confirmation screen (via `public/snipcart-templates.html` template
+  overrides), global Esc-to-close, cart closes on SPA navigation
+  ([`src/App.jsx`](src/App.jsx) `CloseSnipcartOnNavigate`).
 
 ## Languages and i18n
 
