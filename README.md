@@ -49,10 +49,6 @@ During build:
 - **Contact** — a Formspree form with fields for service, date, location,
   number of attendees and message. The booking process is shown as a short
   guide. CTA links (`#vorm`) scroll the form into view on mobile.
-- **Store** (`/pood`, `/en/store`) — a Snipcart store. Products are defined
-  as HTML buy buttons ([`src/pages/Pood.jsx`](src/pages/Pood.jsx)); the cart
-  itself (checkout, payments, shipping) lives in Snipcart. See below.
-
 ## Store (Snipcart)
 
 - The Snipcart loader (public API key, EUR currency, deferred
@@ -80,6 +76,16 @@ During build:
   order-confirmation screen (via `public/snipcart-templates.html` template
   overrides), global Esc-to-close, cart closes on SPA navigation
   ([`src/App.jsx`](src/App.jsx) `CloseSnipcartOnNavigate`).
+
+## Store (removed for now)
+
+A full Snipcart store (side cart, Estonian locale, checkout + confirmation
+"back to site" buttons, Esc close, close-on-navigate) was built and tested
+end-to-end in Snipcart test mode, then taken down at the owner's request
+until the shop actually launches. The complete working implementation is
+preserved in git history (commits `bd14df4`…`fbace8d`, reverted in the
+"pood maha" commit) — re-adding is a matter of reverting that commit.
+The Snipcart dashboard (account, domains, EUR) stays configured.
 
 ## Languages and i18n
 

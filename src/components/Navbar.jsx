@@ -13,7 +13,6 @@ export default function Navbar() {
     { to: pathFor('home', lang), label: t.nav.home, end: true },
     { to: pathFor('gallery', lang), label: t.nav.gallery },
     { to: pathFor('events', lang), label: t.nav.events },
-    { to: pathFor('shop', lang), label: t.nav.shop },
     { to: pathFor('contact', lang), label: t.nav.contact },
   ]
 
@@ -76,13 +75,6 @@ export default function Navbar() {
               EN
             </button>
           </div>
-
-          {/* Snipcarti ostukorv — snipcart-checkout avab carti,
-              snipcart-items-count uueneb automaatselt carti laadimisel. */}
-          <button type="button" className="navbar-cart snipcart-checkout">
-            {t.nav.cart}
-            <span className="snipcart-items-count cart-count">0</span>
-          </button>
 
           <button
             className="navbar-toggle"

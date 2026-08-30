@@ -12,22 +12,6 @@ function ScrollToTop() {
   return null
 }
 
-// Snipcarti modal elab väljaspool Reacti (#root'ist allpool) ja jääks SPA
-// lehevahetusel lahti seisma. Kui kasutaja navigeerib navbari kaudu, sulge
-// avatud cart/checkout — ostukorvi sisu jääb Snipcarti sessiooni meelde.
-function CloseSnipcartOnNavigate() {
-  const { pathname } = useLocation()
-  useEffect(() => {
-    const layout = document.querySelector('.snipcart-layout')
-    if (!layout || layout.offsetParent === null) return
-    const btn =
-      document.querySelector('.rv-cart-close') ||
-      document.querySelector('.snipcart-modal__close')
-    if (btn) btn.click()
-  }, [pathname])
-  return null
-}
-
 // Globaalne scroll-triggered reveal: elemendid klassiga .reveal
 // saavad .is-visible, kui nad vaatevälja jõuavad. Üks ühine
 // IntersectionObserver kogu rakenduse jaoks, taaskäivitatakse
@@ -87,7 +71,6 @@ export default function App() {
     <LanguageProvider>
       <div className="app">
         <ScrollToTop />
-        <CloseSnipcartOnNavigate />
         <SkipLink />
         <Navbar />
         <main className="main" id="main-content">

@@ -14,7 +14,6 @@ export const PAGES = [
   { key: 'home', paths: { et: '/', en: '/en' } },
   { key: 'gallery', paths: { et: '/galerii', en: '/en/gallery' } },
   { key: 'events', paths: { et: '/esinemised', en: '/en/events' } },
-  { key: 'shop', paths: { et: '/pood', en: '/en/store' } },
   { key: 'contact', paths: { et: '/kontakt', en: '/en/contact' } },
 ]
 
