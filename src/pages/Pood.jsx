@@ -16,7 +16,7 @@ export default function Pood() {
 
   return (
     <section className="section">
-      <Seo pageKey="shop" image="/images/kapsas.jpg" />
+      <Seo pageKey="shop" />
       <div className="container">
         <p className="eyebrow">{t.shop.eyebrow}</p>
         <h1 className="page-title">{t.shop.title}</h1>

@@ -26,7 +26,7 @@ export const translations = {
       shop: {
         title: 'Pood — Rauno Vaher',
         description:
-          'Rauno Vaheri pood — värsked kapsad otse kasvatajalt. Turvaline makse ja saatmine vormistatakse ostukorvis.',
+          'Rauno Vaheri pood on praegu ehitamisel. Tulge varsti tagasi.',
       },
       contact: {
         title: 'Kontakt — Rauno Vaher',
@@ -205,7 +205,7 @@ export const translations = {
     shop: {
       eyebrow: 'Pood',
       title: 'Pood',
-      subtitle: 'Värsked kapsad otse kasvatajalt. Makse ja saatmine vormistatakse turvaliselt ostukorvis.',
+      subtitle: 'Pood avatakse varsti.',
       product: {
         name: 'Kapsas',
         price: '20 €',
@@ -216,7 +216,7 @@ export const translations = {
       addToCart: 'Lisa ostukorvi',
       note: 'Makse toimub turvaliselt Snipcarti maksevahendusel.',
       disabledTitle: 'Pood on hetkel ehitamisel',
-      disabledText: 'Tulge varsti tagasi — peatselt saab siit osta värskeid kapsaid.',
+      disabledText: 'Tulge varsti tagasi.',
     },
 
     contact: {
@@ -300,7 +300,7 @@ export const translations = {
       shop: {
         title: 'Store — Rauno Vaher',
         description:
-          'Rauno Vaher’s store — fresh cabbages straight from the grower. Secure payment and shipping are handled in the cart.',
+          'Rauno Vaher’s store is currently being built. Check back soon.',
       },
       contact: {
         title: 'Contact — Rauno Vaher',
@@ -479,7 +479,7 @@ export const translations = {
     shop: {
       eyebrow: 'Store',
       title: 'Store',
-      subtitle: 'Fresh cabbages straight from the grower. Payment and shipping are handled securely in the cart.',
+      subtitle: 'The store will open soon.',
       product: {
         name: 'Cabbage',
         price: '€20',
@@ -490,7 +490,7 @@ export const translations = {
       addToCart: 'Add to cart',
       note: 'Payments are processed securely via Snipcart.',
       disabledTitle: 'The store is currently being built',
-      disabledText: 'Check back soon — fresh cabbages will be available here shortly.',
+      disabledText: 'Check back soon.',
     },
 
     contact: {
